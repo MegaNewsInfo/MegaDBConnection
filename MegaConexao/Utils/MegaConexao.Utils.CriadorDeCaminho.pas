@@ -36,7 +36,7 @@ begin
             GeraAno+'\'+
             GeraMes+'\'+
             GeraDia+'_'+
-            IntToStr(GeraMes);
+            IntToStr(GeraMesNumero);
 end;
 
 function TCriadorDeCaminho.GeraDia: String;

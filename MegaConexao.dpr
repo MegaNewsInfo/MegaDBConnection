@@ -12,7 +12,8 @@ uses
   MegaConexao.Utils.FerramentasApiWindows in 'MegaConexao\Utils\MegaConexao.Utils.FerramentasApiWindows.pas',
   MegaConexao.Logger.Logger in 'MegaConexao\Logger\MegaConexao.Logger.Logger.pas',
   MegaConexao.Utils.CriadorDePasta in 'MegaConexao\Utils\MegaConexao.Utils.CriadorDePasta.pas',
-  MegaConexao.Utils.CriadorDeCaminho in 'MegaConexao\Utils\MegaConexao.Utils.CriadorDeCaminho.pas';
+  MegaConexao.Utils.CriadorDeCaminho in 'MegaConexao\Utils\MegaConexao.Utils.CriadorDeCaminho.pas',
+  MegaConexao.Utils.CriadorNomeArquivo in 'MegaConexao\Utils\MegaConexao.Utils.CriadorNomeArquivo.pas';
 
 {$R *.res}
 

@@ -31,9 +31,9 @@ function TCriadorDePasta.CriarPasta: string;
 var
   PastaArmazenamento : string;
 begin
-    PastaArmazenamento := FCriadorCaminho.GeraCaminhoPasta;
-    Result := PastaArmazenamento;
-    ForceDirectories(PastaArmazenamento);
+  PastaArmazenamento := FCriadorCaminho.GeraCaminhoPasta;
+  Result := PastaArmazenamento;
+  ForceDirectories(PastaArmazenamento);
 end;
 
 

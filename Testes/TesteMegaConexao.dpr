@@ -13,7 +13,11 @@ uses
   DUnitX.TestFramework,
   TesteCriadorDePasta in 'Utils\TesteCriadorDePasta.pas',
   MegaConexao.Utils.CriadorDePasta in '..\MegaConexao\Utils\MegaConexao.Utils.CriadorDePasta.pas',
-  MegaConexao.Utils.CriadorDeCaminho in '..\MegaConexao\Utils\MegaConexao.Utils.CriadorDeCaminho.pas';
+  MegaConexao.Utils.CriadorDeCaminho in '..\MegaConexao\Utils\MegaConexao.Utils.CriadorDeCaminho.pas',
+  TesteLogger in 'Logger\TesteLogger.pas',
+  MegaConexao.Logger.Logger in '..\MegaConexao\Logger\MegaConexao.Logger.Logger.pas',
+  MegaConexao.Logger.iLogger in '..\MegaConexao\Logger\MegaConexao.Logger.iLogger.pas',
+  MegaConexao.Utils.CriadorNomeArquivo in '..\MegaConexao\Utils\MegaConexao.Utils.CriadorNomeArquivo.pas';
 
 var
   runner : ITestRunner;
