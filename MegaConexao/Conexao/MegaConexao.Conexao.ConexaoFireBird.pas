@@ -4,7 +4,7 @@ interface
 
 uses
  FireDAC.Comp.Client,   MegaConexao.Conexao.ParametroConexao.LeitorParametrosFireBird,
- Data.DB, MegaConexao.Conexao.iMegaConexao;
+ Data.DB, MegaConexao.Conexao.iMegaConexao, MegaConexao.Conexao.ParametroConexao.IParametroConexao;
 
 
 type
@@ -27,6 +27,9 @@ type
 
 implementation
 
+uses
+  System.SysUtils;
+
 { TConexaoFireBird }
 
 procedure TConexaoFireBird.CommitaTransacao;
@@ -41,6 +44,8 @@ end;
 
 
 constructor TConexaoFireBird.Create;
+var
+  lParametros : TParametrosConexaoFireDac;
 begin
 
   if not Assigned(FConexao) then begin
@@ -48,12 +53,12 @@ begin
 
     FParametrosConexaoFiredac := TLeitorParametrosFireBird.Create;
 
-    FParametrosConexaoFiredac.LerParametros();
+    lParametros := FParametrosConexaoFiredac.LerParametros();
 
-    FConexao.Params.Database:= FParametrosConexaoFiredac.Parametros.DATA_BASE;
-    FConexao.Params.UserName:= FParametrosConexaoFiredac.Parametros.USER_NAME;
-    FConexao.Params.Password:= FParametrosConexaoFiredac.Parametros.PASSWORD;
-    FConexao.Params.Values['Port'] := FParametrosConexaoFiredac.Parametros.PORT.ToString;
+    FConexao.Params.Database:= lParametros.DATA_BASE;
+    FConexao.Params.UserName:= lParametros.USER_NAME;
+    FConexao.Params.Password:= lParametros.PASSWORD;
+    FConexao.Params.Values['Port'] := inttostr(lParametros.PORT);
     FConexao.DriverName:= 'FB';
     FConexao.Connected := True;
 

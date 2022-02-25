@@ -3,28 +3,19 @@ unit MegaConexao.Conexao.ParametroConexao.LeitorParametrosFireBird;
 interface
 
 uses
-  System.SysUtils, System.IniFiles, MegaConexao.Utils.FerramentasApiWindows;
+  System.SysUtils, System.IniFiles, MegaConexao.Utils.FerramentasApiWindows,MegaConexao.Conexao.ParametroConexao.IParametroConexao;
 
 type
- TParametrosConexaoFireDac = record
-    DATA_BASE: string;
-    USER_NAME: string;
-    PORT: Integer;
-    PASSWORD: string;
- end;
 
- TLeitorParametrosFireBird = class
+
+ TLeitorParametrosFireBird = class(TInterfacedObject, IParametroConexao)
    private
      fParametros : TParametrosConexaoFireDac;
-     function LerArquivoINI:Boolean;
+     procedure LerArquivoINI;
 
    public
-     constructor Create;
-     destructor Destroy; override;
-     property Parametros : TParametrosConexaoFireDac read fParametros;
 
      function LerParametros:TParametrosConexaoFireDac;
-
 
  end;
 
@@ -34,20 +25,8 @@ implementation
 
 { TLeitorParametrosConexaoFiredac }
 
-constructor TLeitorParametrosFireBird.Create;
-begin
 
-
-
-
-end;
-
-destructor TLeitorParametrosFireBird.Destroy;
-begin
-  inherited;
-end;
-
-function TLeitorParametrosFireBird.LerArquivoINI: Boolean;
+procedure TLeitorParametrosFireBird.LerArquivoINI;
 var
  lArqIni : TIniFile;
  lCaminhoBanco,lIP : string;
@@ -78,7 +57,6 @@ begin
 
  except on e:Exception
    do begin
-     Result := False;
      raise Exception.Create('Erro ao ler arquivo INI '+sLineBreak+e.Message);
    end;
  end;

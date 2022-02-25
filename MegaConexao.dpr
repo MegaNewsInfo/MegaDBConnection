@@ -13,7 +13,9 @@ uses
   MegaConexao.Logger.Logger in 'MegaConexao\Logger\MegaConexao.Logger.Logger.pas',
   MegaConexao.Utils.CriadorDePasta in 'MegaConexao\Utils\MegaConexao.Utils.CriadorDePasta.pas',
   MegaConexao.Utils.CriadorDeCaminho in 'MegaConexao\Utils\MegaConexao.Utils.CriadorDeCaminho.pas',
-  MegaConexao.Utils.CriadorNomeArquivo in 'MegaConexao\Utils\MegaConexao.Utils.CriadorNomeArquivo.pas';
+  MegaConexao.Utils.CriadorNomeArquivo in 'MegaConexao\Utils\MegaConexao.Utils.CriadorNomeArquivo.pas',
+  MegaConexao.Conexao.ParametroConexao in 'MegaConexao.Conexao.ParametroConexao.pas',
+  MegaConexao.Conexao.ParametroConexao.IParametroConexao in 'MegaConexao\Conexao\ParametroConexao\MegaConexao.Conexao.ParametroConexao.IParametroConexao.pas';
 
 {$R *.res}
 
