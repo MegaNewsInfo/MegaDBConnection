@@ -132,6 +132,11 @@
         <DCCReference Include="..\MegaConexao\Logger\MegaConexao.Logger.Logger.pas"/>
         <DCCReference Include="..\MegaConexao\Logger\MegaConexao.Logger.iLogger.pas"/>
         <DCCReference Include="..\MegaConexao\Utils\MegaConexao.Utils.CriadorNomeArquivo.pas"/>
+        <DCCReference Include="Conexao\MegaConexao.Testes.Conexao.LeitorParametrosSQLite.pas"/>
+        <DCCReference Include="..\MegaConexao\Conexao\ParametroConexao\MegaConexao.Conexao.ParametroConexao.IParametroConexao.pas"/>
+        <DCCReference Include="Conexao\MegaConexao.Testes.Conexao.ConexaoSQLite.pas"/>
+        <DCCReference Include="..\MegaConexao\Conexao\MegaConexao.Conexao.iMegaConexao.pas"/>
+        <DCCReference Include="Query\TesteQuery.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

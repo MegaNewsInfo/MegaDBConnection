@@ -17,7 +17,12 @@ uses
   TesteLogger in 'Logger\TesteLogger.pas',
   MegaConexao.Logger.Logger in '..\MegaConexao\Logger\MegaConexao.Logger.Logger.pas',
   MegaConexao.Logger.iLogger in '..\MegaConexao\Logger\MegaConexao.Logger.iLogger.pas',
-  MegaConexao.Utils.CriadorNomeArquivo in '..\MegaConexao\Utils\MegaConexao.Utils.CriadorNomeArquivo.pas';
+  MegaConexao.Utils.CriadorNomeArquivo in '..\MegaConexao\Utils\MegaConexao.Utils.CriadorNomeArquivo.pas',
+  MegaConexao.Testes.Conexao.LeitorParametrosSQLite in 'Conexao\MegaConexao.Testes.Conexao.LeitorParametrosSQLite.pas',
+  MegaConexao.Conexao.ParametroConexao.IParametroConexao in '..\MegaConexao\Conexao\ParametroConexao\MegaConexao.Conexao.ParametroConexao.IParametroConexao.pas',
+  MegaConexao.Testes.Conexao.ConexaoSQLite in 'Conexao\MegaConexao.Testes.Conexao.ConexaoSQLite.pas',
+  MegaConexao.Conexao.iMegaConexao in '..\MegaConexao\Conexao\MegaConexao.Conexao.iMegaConexao.pas',
+  TesteQuery in 'Query\TesteQuery.pas';
 
 var
   runner : ITestRunner;

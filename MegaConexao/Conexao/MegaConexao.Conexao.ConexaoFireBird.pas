@@ -3,7 +3,8 @@ unit MegaConexao.Conexao.ConexaoFireBird;
 interface
 
 uses
- FireDAC.Comp.Client,   MegaConexao.Conexao.ParametroConexao.LeitorParametrosFireBird,
+ FireDAC.Comp.Client, FireDAC.Phys.FB,FireDAC.Phys.IB,FireDAC.Phys.Intf,FireDAC.Phys,FireDAC.Phys.FBDef,
+  MegaConexao.Conexao.ParametroConexao.LeitorParametrosFireBird,
  Data.DB, MegaConexao.Conexao.iMegaConexao, MegaConexao.Conexao.ParametroConexao.IParametroConexao;
 
 
@@ -15,7 +16,7 @@ type
 
 
     public
-      function Connection :TCustomConnection;
+      function Connection :TFDCustomConnection;
       procedure IniciaTransacao();
       procedure CommitaTransacao();
       procedure RollBackTransacao();
@@ -37,7 +38,7 @@ begin
    FConexao.Commit;
 end;
 
-function TConexaoFireBird.Connection: TCustomConnection;
+function TConexaoFireBird.Connection: TFDCustomConnection;
 begin
  Result := FConexao;
 end;
@@ -60,6 +61,7 @@ begin
     FConexao.Params.Password:= lParametros.PASSWORD;
     FConexao.Params.Values['Port'] := inttostr(lParametros.PORT);
     FConexao.DriverName:= 'FB';
+
     FConexao.Connected := True;
 
   end;

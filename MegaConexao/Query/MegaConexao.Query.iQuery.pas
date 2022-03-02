@@ -3,7 +3,7 @@ unit MegaConexao.Query.iQuery;
 interface
 
 uses Data.DB, MegaConexao.Conexao.iMegaConexao,
-  MegaConexao.SqlBuilder.iSqlBuilder;
+  MegaConexao.SqlBuilder.iSqlBuilder, MegaConexao.Logger.iLogger;
 
 type
   iQuery = interface

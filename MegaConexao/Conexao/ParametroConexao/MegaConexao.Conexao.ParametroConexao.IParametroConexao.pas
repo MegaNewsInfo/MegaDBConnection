@@ -2,6 +2,8 @@ unit MegaConexao.Conexao.ParametroConexao.IParametroConexao;
 
 interface
 
+uses FireDAC.Phys;
+
  type TParametrosConexaoFireDac = record
     DATA_BASE: string;
     USER_NAME: string;
