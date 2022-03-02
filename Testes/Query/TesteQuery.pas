@@ -21,6 +21,8 @@ type
     procedure TearDown;
     [Test]
     procedure TestSQLSucess;
+    [Test]
+    procedure TestSQLFailed;
 
   end;
 
@@ -81,6 +83,15 @@ begin
 
 end;
 
+procedure TTesteQuery.TestSQLFailed;
+var
+  lQuery : IQuery;
+  comando : string;
+begin
+  lQuery := TMegaQuery.create(FMegaConexao,FLogger);
+  Assert.IsFalse(lQuery.SQL('select * from tabela').DataSet.RecordCount > 0);
+end;
+
 procedure TTesteQuery.TestSQLSucess;
 var
   lQuery : IQuery;
@@ -92,6 +103,7 @@ begin
   lQuery.ExecuteSql(comando);
 
   Assert.IsTrue(lQuery.SQL('select * from tabela').DataSet.RecordCount > 0);
+  lQuery.ExecuteSql('delete from tabela');
 end;
 
 initialization

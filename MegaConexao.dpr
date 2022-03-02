@@ -16,7 +16,8 @@ uses
   MegaConexao.Utils.CriadorNomeArquivo in 'MegaConexao\Utils\MegaConexao.Utils.CriadorNomeArquivo.pas',
   MegaConexao.Conexao.ParametroConexao in 'MegaConexao.Conexao.ParametroConexao.pas',
   MegaConexao.Conexao.ParametroConexao.IParametroConexao in 'MegaConexao\Conexao\ParametroConexao\MegaConexao.Conexao.ParametroConexao.IParametroConexao.pas',
-  MegaConexao.Query.MegaQuery in 'MegaConexao\Query\MegaConexao.Query.MegaQuery.pas';
+  MegaConexao.Query.MegaQuery in 'MegaConexao\Query\MegaConexao.Query.MegaQuery.pas',
+  MegaConexao.SqlBuilder.SqlBuilder in 'MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilder.pas';
 
 {$R *.res}
 

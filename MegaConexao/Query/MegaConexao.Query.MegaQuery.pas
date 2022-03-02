@@ -18,8 +18,8 @@ uses
 
 
     function SQL(value: string): iQuery; overload;
-    function SQL(pSql:iSqlBuilder): iQuery; overload;
-    function ExecuteSql(value: string) : iQuery;
+    procedure ExecuteSql(pSql:iSqlBuilder); overload;
+    procedure ExecuteSql(value: string); overload;
     function DataSet: TDataSet;
 
     constructor Create(pMegaConexao : iMegaConexao; pLogger : Ilogger);
@@ -48,11 +48,10 @@ begin
   Result := FQuery;
 end;
 
-function TMegaQuery.ExecuteSql(value: string): iQuery;
+procedure TMegaQuery.ExecuteSql(value: string);
 var
   logText : string;
 begin
-  Result := Self;
 
   FQuery.SQL.Clear;
   FQuery.SQL.Add(value);
@@ -94,7 +93,7 @@ begin
  end;
 end;
 
-function TMegaQuery.SQL(pSql: iSqlBuilder): iQuery;
+procedure TMegaQuery.ExecuteSql(pSql: iSqlBuilder);
 begin
   ExecuteSql(pSql.ToString());
 end;
