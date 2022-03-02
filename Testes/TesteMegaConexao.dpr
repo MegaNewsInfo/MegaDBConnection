@@ -12,17 +12,23 @@ uses
   DUnitX.Loggers.Xml.NUnit,
   DUnitX.TestFramework,
   TesteCriadorDePasta in 'Utils\TesteCriadorDePasta.pas',
-  MegaConexao.Utils.CriadorDePasta in '..\MegaConexao\Utils\MegaConexao.Utils.CriadorDePasta.pas',
-  MegaConexao.Utils.CriadorDeCaminho in '..\MegaConexao\Utils\MegaConexao.Utils.CriadorDeCaminho.pas',
   TesteLogger in 'Logger\TesteLogger.pas',
   MegaConexao.Logger.Logger in '..\MegaConexao\Logger\MegaConexao.Logger.Logger.pas',
   MegaConexao.Logger.iLogger in '..\MegaConexao\Logger\MegaConexao.Logger.iLogger.pas',
-  MegaConexao.Utils.CriadorNomeArquivo in '..\MegaConexao\Utils\MegaConexao.Utils.CriadorNomeArquivo.pas',
   MegaConexao.Testes.Conexao.LeitorParametrosSQLite in 'Conexao\MegaConexao.Testes.Conexao.LeitorParametrosSQLite.pas',
   MegaConexao.Conexao.ParametroConexao.IParametroConexao in '..\MegaConexao\Conexao\ParametroConexao\MegaConexao.Conexao.ParametroConexao.IParametroConexao.pas',
   MegaConexao.Testes.Conexao.ConexaoSQLite in 'Conexao\MegaConexao.Testes.Conexao.ConexaoSQLite.pas',
   MegaConexao.Conexao.iMegaConexao in '..\MegaConexao\Conexao\MegaConexao.Conexao.iMegaConexao.pas',
-  TesteQuery in 'Query\TesteQuery.pas';
+  TesteQuery in 'Query\TesteQuery.pas',
+  MegaConexao.Conexao.ConexaoFireBird in '..\MegaConexao\Conexao\MegaConexao.Conexao.ConexaoFireBird.pas',
+  MegaConexao.Query.iQuery in '..\MegaConexao\Query\MegaConexao.Query.iQuery.pas',
+  MegaConexao.Query.MegaQuery in '..\MegaConexao\Query\MegaConexao.Query.MegaQuery.pas',
+  MegaConexao.Conexao.ParametroConexao.LeitorParametrosFireBird in '..\MegaConexao\Conexao\ParametroConexao\MegaConexao.Conexao.ParametroConexao.LeitorParametrosFireBird.pas',
+  MegaConexao.Utils.CriadorDeCaminho in '..\MegaConexao\Utils\MegaConexao.Utils.CriadorDeCaminho.pas',
+  MegaConexao.Utils.CriadorDePasta in '..\MegaConexao\Utils\MegaConexao.Utils.CriadorDePasta.pas',
+  MegaConexao.Utils.CriadorNomeArquivo in '..\MegaConexao\Utils\MegaConexao.Utils.CriadorNomeArquivo.pas',
+  MegaConexao.Utils.FerramentasApiWindows in '..\MegaConexao\Utils\MegaConexao.Utils.FerramentasApiWindows.pas',
+  MegaConexao.SqlBuilder.iSqlBuilder in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.iSqlBuilder.pas';
 
 var
   runner : ITestRunner;

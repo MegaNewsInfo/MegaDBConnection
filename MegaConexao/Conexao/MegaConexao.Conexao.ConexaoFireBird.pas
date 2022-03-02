@@ -4,7 +4,7 @@ interface
 
 uses
  FireDAC.Comp.Client, FireDAC.Phys.FB,FireDAC.Phys.IB,FireDAC.Phys.Intf,FireDAC.Phys,FireDAC.Phys.FBDef,
-  MegaConexao.Conexao.ParametroConexao.LeitorParametrosFireBird,
+  MegaConexao.Conexao.ParametroConexao.LeitorParametrosFireBird,FireDAC.Stan.Def, FireDAC.DApt,FireDac.Stan.Async,
  Data.DB, MegaConexao.Conexao.iMegaConexao, MegaConexao.Conexao.ParametroConexao.IParametroConexao;
 
 

@@ -126,17 +126,23 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="Utils\TesteCriadorDePasta.pas"/>
-        <DCCReference Include="..\MegaConexao\Utils\MegaConexao.Utils.CriadorDePasta.pas"/>
-        <DCCReference Include="..\MegaConexao\Utils\MegaConexao.Utils.CriadorDeCaminho.pas"/>
         <DCCReference Include="Logger\TesteLogger.pas"/>
         <DCCReference Include="..\MegaConexao\Logger\MegaConexao.Logger.Logger.pas"/>
         <DCCReference Include="..\MegaConexao\Logger\MegaConexao.Logger.iLogger.pas"/>
-        <DCCReference Include="..\MegaConexao\Utils\MegaConexao.Utils.CriadorNomeArquivo.pas"/>
         <DCCReference Include="Conexao\MegaConexao.Testes.Conexao.LeitorParametrosSQLite.pas"/>
         <DCCReference Include="..\MegaConexao\Conexao\ParametroConexao\MegaConexao.Conexao.ParametroConexao.IParametroConexao.pas"/>
         <DCCReference Include="Conexao\MegaConexao.Testes.Conexao.ConexaoSQLite.pas"/>
         <DCCReference Include="..\MegaConexao\Conexao\MegaConexao.Conexao.iMegaConexao.pas"/>
         <DCCReference Include="Query\TesteQuery.pas"/>
+        <DCCReference Include="..\MegaConexao\Conexao\MegaConexao.Conexao.ConexaoFireBird.pas"/>
+        <DCCReference Include="..\MegaConexao\Query\MegaConexao.Query.iQuery.pas"/>
+        <DCCReference Include="..\MegaConexao\Query\MegaConexao.Query.MegaQuery.pas"/>
+        <DCCReference Include="..\MegaConexao\Conexao\ParametroConexao\MegaConexao.Conexao.ParametroConexao.LeitorParametrosFireBird.pas"/>
+        <DCCReference Include="..\MegaConexao\Utils\MegaConexao.Utils.CriadorDeCaminho.pas"/>
+        <DCCReference Include="..\MegaConexao\Utils\MegaConexao.Utils.CriadorDePasta.pas"/>
+        <DCCReference Include="..\MegaConexao\Utils\MegaConexao.Utils.CriadorNomeArquivo.pas"/>
+        <DCCReference Include="..\MegaConexao\Utils\MegaConexao.Utils.FerramentasApiWindows.pas"/>
+        <DCCReference Include="..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.iSqlBuilder.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -180,16 +186,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
                 <DeployClass Name="ProjectOSXResource">
                     <Platform Name="OSX32">
                         <RemoteDir>Contents\Resources</RemoteDir>
@@ -503,7 +500,16 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                </DeployClass>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
