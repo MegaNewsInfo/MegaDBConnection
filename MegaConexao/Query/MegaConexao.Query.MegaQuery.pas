@@ -59,17 +59,14 @@ begin
  try
     FQuery.ExecSQL;
  except on e: exception do
- begin
-    logText := 'Erro ao executar comando Sql em TMegaQuery.ExecuteSql: '+ sLineBreak+
-    value+sLineBreak+
-    e.Message;
-    FLogger.Gravar(logText);
-    raise  e;
+   begin
+      logText := 'Erro ao executar comando Sql em TMegaQuery.ExecuteSql: '+ sLineBreak+
+      value+sLineBreak+
+      e.Message;
+      FLogger.Gravar(logText);
+      raise Exception.Create(E.Message);
+   end;
  end;
- end;
-
-
-
 end;
 
 function TMegaQuery.SQL(value: string): iQuery;
@@ -95,7 +92,13 @@ end;
 
 procedure TMegaQuery.ExecuteSql(pSql: iSqlBuilder);
 begin
-  ExecuteSql(pSql.ToString());
+  try
+    ExecuteSql(pSql.ToString());
+  except on E : Exception do
+    begin
+      raise Exception.Create(E.Message);
+    end;
+  end;
 end;
 
 end.
