@@ -11,6 +11,7 @@ type
   TSQLBuilderUpdate = class(TBaseSqlBuilder, ISqlBuilder)
   private
     FCriterio : string;
+    function MontaCampos : String;
 
   public
     function Add(Campo: string; Valor: Variant; TamanhoCampo: Integer = 0;
@@ -18,6 +19,7 @@ type
     function Criterio(pCriterio: string): iSqlBuilder;
     function Tabela(pTabela: string): iSqlBuilder;
     function ToString: string; override;
+
 
   end;
 
@@ -41,6 +43,52 @@ begin
 end;
 
 
+function TSQLBuilderUpdate.MontaCampos: String;
+var
+  UpdateSintax: TStringList;
+  ValorStr: string;
+  SeparatorSintax: string;
+  i: integer;
+  lListaCampos : TList<TCampo>;
+begin
+  try
+
+
+    try
+      UpdateSintax := TStringList.Create;
+      lListaCampos := RetornaListaCampo;
+
+      for i := 0 to self.Count - 1 do
+      begin
+        ValorStr := IfThen(lListaCampos[i].Quoted = True,
+                           QuotedStr(lListaCampos[i].ValorCampo),
+                           lListaCampos[i].ValorCampo);
+
+        SeparatorSintax := IfThen(i = (self.Count - 1), '', ',');
+
+        UpdateSintax.Add(lListaCampos[i].NomeCampo + ' = ' +
+                         ValorStr                          +
+                         SeparatorSintax);
+      end;
+
+      Result := UpdateSintax.Text;
+
+    finally
+      if Assigned(UpdateSintax) then
+        FreeAndNil(UpdateSintax);
+    end;
+  except on E: Exception do
+    begin
+      if Assigned(UpdateSintax) then
+        FreeAndNil(UpdateSintax);
+
+      raise Exception.Create(e.Message);
+
+    end;
+  end;
+
+end;
+
 function TSQLBuilderUpdate.Tabela(pTabela: string): iSqlBuilder;
 begin
   try
@@ -54,35 +102,14 @@ begin
 end;
 
 function TSQLBuilderUpdate.ToString: string;
-var
-  UpdateSintax: TStringList;
-  ValorStr: string;
-  SeparatorSintax: string;
-  i: integer;
-  lListaCampos : TList<TCampo>;
 begin
   Result := '';
 
   if (self.Count > 0) then
   begin
-    UpdateSintax := TStringList.Create;
-    lListaCampos := RetornaListaCampo;
-
-    for i := 0 to self.Count - 1 do
-    begin
-      ValorStr := IfThen(lListaCampos[i].Quoted = True,
-                         QuotedStr(lListaCampos[i].ValorCampo),
-                         lListaCampos[i].ValorCampo);
-
-      SeparatorSintax := IfThen(i = (self.Count - 1), '', ',');
-
-      UpdateSintax.Add(lListaCampos[i].NomeCampo + ' = ' +
-                       ValorStr                          +
-                       SeparatorSintax);
-    end;
 
     Result := 'UPDATE ' + NomeTabela + ' SET  ' + #13 +
-              UpdateSintax.Text + #13 +
+              MontaCampos + #13 +
               IfThen(FCriterio <> '', ' WHERE ' + #13 +
               StringReplace(FCriterio,
                             'WHERE',
@@ -90,9 +117,8 @@ begin
                             [rfReplaceAll]),
                             '');
 
-    FreeAndNil(UpdateSintax);
-  end
 
+  end;
 
 end;
 
