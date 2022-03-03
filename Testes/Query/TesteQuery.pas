@@ -3,7 +3,8 @@ unit TesteQuery;
 interface
 uses
   DUnitX.TestFramework, MegaConexao.Conexao.iMegaConexao,
-  MegaConexao.Logger.iLogger;
+  MegaConexao.Logger.iLogger, MegaConexao.SqlBuilder.iSqlBuilder,
+  MegaConexao.SqlBuilder.SqlBuilderInsert;
 
 type
 
@@ -23,6 +24,10 @@ type
     procedure TestSQLSucess;
     [Test]
     procedure TestSQLFailed;
+    [Test]
+    procedure TestSQLBuilderInsertSucess;
+    [Test]
+    procedure TestSQLBuilderInserFailed;
 
   end;
 
@@ -81,6 +86,43 @@ begin
      ILogger(p)._Release;
    end;
 
+end;
+
+procedure TTesteQuery.TestSQLBuilderInserFailed;
+var
+  lQuery : IQuery;
+  comando : string;
+  lSqlBuilder : iSqlBuilder;
+begin
+  lSqlBuilder := TSqlBuilderInsert.Create;
+  lSqlBuilder.Add('id',1)
+              .Add('sobrenome','outro teste')
+              .Tabela('tabela');
+  lQuery := TMegaQuery.create(FMegaConexao,FLogger);
+
+  Assert.WillRaise(procedure()
+                    begin
+                      lQuery.ExecuteSql(lSqlBuilder)
+                    end);
+end;
+
+procedure TTesteQuery.TestSQLBuilderInsertSucess;
+var
+  lQuery : IQuery;
+  comando : string;
+  lSqlBuilder : iSqlBuilder;
+begin
+  lSqlBuilder := TSqlBuilderInsert.Create;
+  lSqlBuilder.Add('id',1)
+             .Add('nome','Teste')
+             .Tabela('tabela');
+
+  lQuery := TMegaQuery.create(FMegaConexao,FLogger);
+
+  lQuery.ExecuteSql(lSqlBuilder);
+
+  Assert.IsTrue(lQuery.SQL('select * from tabela').DataSet.RecordCount > 0);
+  lQuery.ExecuteSql('delete from tabela');
 end;
 
 procedure TTesteQuery.TestSQLFailed;

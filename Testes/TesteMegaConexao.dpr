@@ -28,7 +28,9 @@ uses
   MegaConexao.Utils.CriadorDePasta in '..\MegaConexao\Utils\MegaConexao.Utils.CriadorDePasta.pas',
   MegaConexao.Utils.CriadorNomeArquivo in '..\MegaConexao\Utils\MegaConexao.Utils.CriadorNomeArquivo.pas',
   MegaConexao.Utils.FerramentasApiWindows in '..\MegaConexao\Utils\MegaConexao.Utils.FerramentasApiWindows.pas',
-  MegaConexao.SqlBuilder.iSqlBuilder in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.iSqlBuilder.pas';
+  MegaConexao.SqlBuilder.iSqlBuilder in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.iSqlBuilder.pas',
+  MegaConexao.SqlBuilder.SqlBuilderInsert in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderInsert.pas',
+  MegaConexao.SqlBuilder.SqlBuilderBase in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderBase.pas';
 
 var
   runner : ITestRunner;

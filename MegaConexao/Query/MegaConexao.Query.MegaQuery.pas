@@ -15,8 +15,6 @@ uses
      FQuery : TFDQuery;
 
   public
-
-
     function SQL(value: string): iQuery; overload;
     procedure ExecuteSql(pSql:iSqlBuilder); overload;
     procedure ExecuteSql(value: string); overload;
@@ -77,16 +75,16 @@ begin
   FQuery.SQL.Clear;
   FQuery.SQL.Add(value);
 
-  try
-    FQuery.Active := True;
+ try
+   FQuery.Active := True;
  except on e: exception do
- begin
-    logText := 'Erro ao executar comando Sql em TMegaQuery.SQL: '+ sLineBreak+
-    value+sLineBreak+
-    e.Message;
-    FLogger.Gravar(logText);
-    raise e;
- end;
+   begin
+      logText := 'Erro ao executar comando Sql em TMegaQuery.SQL: '+ sLineBreak+
+      value+sLineBreak+
+      e.Message;
+      FLogger.Gravar(logText);
+      raise Exception.Create(E.Message);
+   end;
  end;
 end;
 
