@@ -30,7 +30,8 @@ uses
   MegaConexao.Utils.FerramentasApiWindows in '..\MegaConexao\Utils\MegaConexao.Utils.FerramentasApiWindows.pas',
   MegaConexao.SqlBuilder.iSqlBuilder in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.iSqlBuilder.pas',
   MegaConexao.SqlBuilder.SqlBuilderInsert in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderInsert.pas',
-  MegaConexao.SqlBuilder.SqlBuilderBase in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderBase.pas';
+  MegaConexao.SqlBuilder.SqlBuilderBase in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderBase.pas',
+  MegaConexao.SqlBuilder.SqlBuilderUpdate in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderUpdate.pas';
 
 var
   runner : ITestRunner;

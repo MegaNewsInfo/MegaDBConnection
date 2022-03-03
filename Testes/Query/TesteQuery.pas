@@ -4,7 +4,8 @@ interface
 uses
   DUnitX.TestFramework, MegaConexao.Conexao.iMegaConexao,
   MegaConexao.Logger.iLogger, MegaConexao.SqlBuilder.iSqlBuilder,
-  MegaConexao.SqlBuilder.SqlBuilderInsert;
+  MegaConexao.SqlBuilder.SqlBuilderInsert,
+  MegaConexao.SqlBuilder.SqlBuilderUpdate;
 
 type
 
@@ -27,7 +28,11 @@ type
     [Test]
     procedure TestSQLBuilderInsertSucess;
     [Test]
-    procedure TestSQLBuilderInserFailed;
+    procedure TestSQLBuilderInsertFailed;
+    [Test]
+    procedure TestSQLBuilderUpdateSucess;
+     [Test]
+    procedure TestSQLBuilderUpdateFailed;
 
   end;
 
@@ -88,7 +93,7 @@ begin
 
 end;
 
-procedure TTesteQuery.TestSQLBuilderInserFailed;
+procedure TTesteQuery.TestSQLBuilderInsertFailed;
 var
   lQuery : IQuery;
   comando : string;
@@ -122,6 +127,68 @@ begin
   lQuery.ExecuteSql(lSqlBuilder);
 
   Assert.IsTrue(lQuery.SQL('select * from tabela').DataSet.RecordCount > 0);
+  lQuery.ExecuteSql('delete from tabela');
+end;
+
+procedure TTesteQuery.TestSQLBuilderUpdateFailed;
+var
+  lQuery : IQuery;
+  comando : string;
+  lSqlBuilder : iSqlBuilder;
+begin
+  lSqlBuilder := TSqlBuilderInsert.Create;
+  lSqlBuilder.Add('id',1)
+             .Add('nome','Teste')
+             .Tabela('tabela');
+
+  lQuery := TMegaQuery.create(FMegaConexao,FLogger);
+
+  lQuery.ExecuteSql(lSqlBuilder);
+
+  lSqlBuilder := TSQLBuilderUpdate.Create;
+  lSqlBuilder.Add('id',1)
+             .Add('nome','Teste Update')
+             .Tabela('tabela')
+             .Criterio('id = 2');
+
+  lQuery.ExecuteSql(lSqlBuilder);
+
+
+  Assert.AreNotEqual(lQuery.SQL('select * from tabela where id = 2')
+                      .DataSet.FieldByName('nome')
+                      .AsString,'Teste Update');
+
+  lQuery.ExecuteSql('delete from tabela');
+end;
+
+procedure TTesteQuery.TestSQLBuilderUpdateSucess;
+var
+  lQuery : IQuery;
+  comando : string;
+  lSqlBuilder : iSqlBuilder;
+begin
+  lSqlBuilder := TSqlBuilderInsert.Create;
+  lSqlBuilder.Add('id',1)
+             .Add('nome','Teste')
+             .Tabela('tabela');
+
+  lQuery := TMegaQuery.create(FMegaConexao,FLogger);
+
+  lQuery.ExecuteSql(lSqlBuilder);
+
+  lSqlBuilder := TSQLBuilderUpdate.Create;
+  lSqlBuilder.Add('id',1)
+             .Add('nome','Teste Update')
+             .Tabela('tabela')
+             .Criterio('id = 1');
+
+  lQuery.ExecuteSql(lSqlBuilder);
+
+
+  Assert.AreEqual(lQuery.SQL('select * from tabela where id = 1')
+                .DataSet.FieldByName('nome')
+                .AsString, 'Teste Update');
+
   lQuery.ExecuteSql('delete from tabela');
 end;
 

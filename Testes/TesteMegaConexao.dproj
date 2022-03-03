@@ -145,6 +145,7 @@
         <DCCReference Include="..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.iSqlBuilder.pas"/>
         <DCCReference Include="..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderInsert.pas"/>
         <DCCReference Include="..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderBase.pas"/>
+        <DCCReference Include="..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderUpdate.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

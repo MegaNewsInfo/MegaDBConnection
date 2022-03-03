@@ -4,7 +4,7 @@ interface
 
 uses
   System.Generics.Collections, System.SysUtils, System.StrUtils,
-  System.Classes;
+  System.Classes, System.Variants;
 
 type
   TFormatoDataHora = (SomenteData, DataEHora, SomenteHora);
@@ -60,10 +60,11 @@ type
         procedure AddNull(campo: string);
         function GetCount : Integer;
         property Count: integer read GetCount;
-        function MontaCampos() : string;
-        function MontaValores() : string;
         procedure Tabela(pTabela : string);
         function NomeTabela() : string;
+        function RetornaListaCampo : TList<TCampo>;
+        procedure Add(Campo: string; Valor: Variant; TamanhoCampo: Integer = 0;
+                       AdicionarParametro: Boolean = True);overload;
       public
         constructor Create(); reintroduce;
         destructor Destroy;override;
@@ -232,78 +233,15 @@ begin
     Result := FListaCampos.Count;
 end;
 
-function TBaseSqlBuilder.MontaCampos: string;
-var
-  posicao : Integer;
-  SeparatorSintax: string;
-  InsertIntoSintax: TStringList;
-begin
-  try
-    try
-      InsertIntoSintax := TStringList.Create;
-      for posicao := 0 to pred(self.Count) do
-      begin
-        SeparatorSintax := IfThen(posicao = pred(self.Count), '', ',');
-        InsertIntoSintax.Add(FListaCampos[posicao].NomeCampo + SeparatorSintax);
-      end;
-      result := InsertIntoSintax.Text;
-    finally
-      if Assigned(InsertIntoSintax) then
-      begin
-        FreeAndNil(InsertIntoSintax);
-      end;
-    end;
-  except on E : Exception do
-    begin
-      if Assigned(InsertIntoSintax) then
-      begin
-        FreeAndNil(InsertIntoSintax);
-      end;
-
-      raise E;
-    end;
-  end;
-end;
-
-function TBaseSqlBuilder.MontaValores: string;
-var
-  posicao : Integer;
-  SeparatorSintax: string;
-  ValuesSintax: TStringList;
-  ValorStr : string;
-begin
-  try
-    try
-      ValuesSintax := TStringList.Create;
-      for posicao := 0 to pred(self.Count) do
-      begin
-        ValorStr := IfThen(FListaCampos[posicao].Quoted = true, QuotedStr(FListaCampos[posicao].ValorCampo),
-                           FListaCampos[posicao].ValorCampo);
-        SeparatorSintax := IfThen(posicao = pred(self.Count),'', ',');
-        ValuesSintax.Add(ValorStr + SeparatorSintax);
-      end;
-      result := ValuesSintax.Text;
-    finally
-      if Assigned(ValuesSintax) then
-      begin
-        FreeAndNil(ValuesSintax);
-      end;
-    end;
-  except on E : Exception do
-    begin
-      if Assigned(ValuesSintax) then
-      begin
-        FreeAndNil(ValuesSintax);
-      end;
-
-      raise E;
-    end;
-  end;
-end;
 
 function TBaseSqlBuilder.NomeTabela: string;
 begin
   result := FTabela;
+end;
+
+function TBaseSqlBuilder.RetornaListaCampo: TList<TCampo>;
+begin
+  Result := FListaCampos;
 end;
 
 procedure TBaseSqlBuilder.Tabela(pTabela: string);
@@ -319,5 +257,58 @@ begin
   FNomeCampo  := pNomeCampo;
   FQuoted     := pQuoted;
 end;
+
+procedure TBaseSqlBuilder.Add(Campo: string; Valor: Variant;
+  TamanhoCampo: Integer; AdicionarParametro: Boolean);
+var
+  basicType: integer;
+begin
+  basicType := VarType(valor) and VarTypeMask;
+
+  case basicType of
+
+    varEmpty:
+      AddNull(campo);
+    varNull:
+      AddNull(campo);
+    varSmallint:
+      Add(campo, integer(valor), AdicionarParametro);
+    varInteger:
+      Add(campo, integer(valor), AdicionarParametro);
+    varSingle:
+      Add(campo, Double(valor), AdicionarParametro);
+    varDouble:
+      Add(campo, Double(valor), AdicionarParametro);
+    varCurrency:
+      Add(campo, Double(valor), AdicionarParametro);
+    varDate:
+      Add(campo, VarToDateTime(valor), SomenteData, AdicionarParametro);
+    varBoolean:
+      Add(campo, Boolean(valor), AdicionarParametro);
+    varVariant:
+      Add(campo, string(valor), TamanhoCampo, AdicionarParametro);
+    varUnknown:
+      Add(campo, string(valor), TamanhoCampo, AdicionarParametro);
+    varShortInt:
+      Add(campo, integer(valor), AdicionarParametro);
+    varByte:
+      Add(campo, integer(valor), AdicionarParametro);
+    varWord:
+      Add(campo, string(valor), TamanhoCampo, AdicionarParametro);
+    varLongWord:
+      Add(campo, string(valor), TamanhoCampo, AdicionarParametro);
+    varInt64:
+      Add(campo, integer(valor), AdicionarParametro);
+    varStrArg:
+      Add(campo, string(valor), TamanhoCampo, AdicionarParametro);
+    varString:
+      Add(campo, string(valor), TamanhoCampo, AdicionarParametro);
+    varUString:
+      Add(campo, string(valor), TamanhoCampo, AdicionarParametro);
+    varAny:
+      Add(campo, string(valor), TamanhoCampo, AdicionarParametro);
+  end;
+end;
+
 
 end.
