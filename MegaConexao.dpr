@@ -20,7 +20,10 @@ uses
   MegaConexao.SqlBuilder.SqlBuilderInsert in 'MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderInsert.pas',
   MegaConexao.SqlBuilder.SqlBuilderBase in 'MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderBase.pas',
   MegaConexao.SqlBuilder.SqlBuilderUpdate in 'MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderUpdate.pas',
-  MegaConexao.SqlBuilder.SqlBuilderDelete in 'MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderDelete.pas';
+  MegaConexao.SqlBuilder.SqlBuilderDelete in 'MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderDelete.pas',
+  MegaConexao.Factories.FactoryQuery in 'MegaConexao\Factories\MegaConexao.Factories.FactoryQuery.pas',
+  MegaConexao.Factories.FactorySqlBuilder in 'MegaConexao\Factories\MegaConexao.Factories.FactorySqlBuilder.pas',
+  MegaConexao.SqlBuilder.SqlBuilderUpdateOrInsert in 'MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderUpdateOrInsert.pas';
 
 {$R *.res}
 
