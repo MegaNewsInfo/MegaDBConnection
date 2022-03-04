@@ -35,7 +35,9 @@ uses
   TesteSQLBuiderInsert in 'SQLBuilder\TesteSQLBuiderInsert.pas',
   MegaConexao.SqlBuilder.SqlBuilderDelete in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderDelete.pas',
   TesteSQLBuiderUpdate in 'SQLBuilder\TesteSQLBuiderUpdate.pas',
-  TesteSQLBuiderDelete in 'SQLBuilder\TesteSQLBuiderDelete.pas';
+  TesteSQLBuiderDelete in 'SQLBuilder\TesteSQLBuiderDelete.pas',
+  MegaConexao.SqlBuilder.SqlBuilderUpdateOrInsert in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderUpdateOrInsert.pas',
+  TesteSQLBuiderUpdateOrInsert in 'SQLBuilder\TesteSQLBuiderUpdateOrInsert.pas';
 
 var
   runner : ITestRunner;

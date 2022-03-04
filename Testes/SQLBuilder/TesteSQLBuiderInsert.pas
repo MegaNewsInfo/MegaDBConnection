@@ -49,7 +49,7 @@ var
  lsql,lsql2 : string;
 begin
 
-  lsql := 'insert into  (teste) values (''N'') ;';
+  lsql := 'insert into  (teste) values (''N'')';
   lSqlBuilder := TSqlBuilderInsert.Create;
   lsql2 := StringReplace(lSqlBuilder.Add('teste',False).ToString.Trim,sLineBreak,'',[rfReplaceAll,rfIgnoreCase]);
   Assert.AreEqual(lsql.Trim,Trim(lsql2));
@@ -63,7 +63,7 @@ var
  lsql,lsql2 : string;
 begin
 
-  lsql := 'insert into  (teste) values (''S'') ;';
+  lsql := 'insert into  (teste) values (''S'')';
   lSqlBuilder := TSqlBuilderInsert.Create;
   lsql2 := StringReplace(lSqlBuilder.Add('teste',True).ToString.Trim,sLineBreak,'',[rfReplaceAll,rfIgnoreCase]);
   Assert.AreEqual(lsql.Trim,Trim(lsql2));
@@ -76,7 +76,7 @@ var
  lsql,lsql2 : string;
 begin
 
-  lsql := 'insert into  (teste) values (''MEGA'') ;';
+  lsql := 'insert into  (teste) values (''MEGA'')';
   lSqlBuilder := TSqlBuilderInsert.Create;
   lsql2 := StringReplace(lSqlBuilder.Add('teste','MEGA',0,True).ToString.Trim,sLineBreak,'',[rfReplaceAll,rfIgnoreCase]);
   Assert.AreEqual(lsql.Trim,Trim(lsql2));
@@ -90,7 +90,7 @@ var
  lNul :Variant;
 begin
 
-  lsql := 'insert into  (teste) values (NULL) ;';
+  lsql := 'insert into  (teste) values (NULL)';
   lSqlBuilder := TSqlBuilderInsert.Create;
   lsql2 := StringReplace(lSqlBuilder.Add('teste',lNul).ToString.Trim,sLineBreak,'',[rfReplaceAll,rfIgnoreCase]);
   Assert.AreEqual(lsql.Trim,Trim(lsql2));
@@ -103,7 +103,7 @@ var
  lsql,lsql2 : string;
 begin
 
-  lsql := 'insert into  (teste) values (''MEGA'') ;';
+  lsql := 'insert into  (teste) values (''MEGA'')';
   lSqlBuilder := TSqlBuilderInsert.Create;
   lsql2 := StringReplace(lSqlBuilder.Add('teste','MEGA',0,True).
            Add('teste2','COISA',0,False).ToString.Trim,sLineBreak,'',[rfReplaceAll,rfIgnoreCase]);
@@ -117,7 +117,7 @@ var
  lsql,lsql2 : string;
 begin
 
-  lsql := 'insert into  (teste) values (''MEG'') ;';
+  lsql := 'insert into  (teste) values (''MEG'')';
   lSqlBuilder := TSqlBuilderInsert.Create;
   lsql2 := StringReplace(lSqlBuilder.Add('teste','MEGA',3).ToString.Trim,sLineBreak,'',[rfReplaceAll,rfIgnoreCase]);
   Assert.AreEqual(lsql.Trim,Trim(lsql2));
@@ -130,7 +130,7 @@ var
  lsql,lsql2 : string;
 begin
 
-  lsql := 'insert into  (teste) values (''MEGA'') ;';
+  lsql := 'insert into  (teste) values (''MEGA'')';
   lSqlBuilder := TSqlBuilderInsert.Create;
   lsql2 := StringReplace(lSqlBuilder.Add('teste','MEGA').ToString.Trim,sLineBreak,'',[rfReplaceAll,rfIgnoreCase]);
   Assert.AreEqual(lsql.Trim,Trim(lsql2));
@@ -143,7 +143,7 @@ var
  lsql,lsql2 : string;
 begin
 
-  lsql := 'insert into  (teste) values (''M'') ;';
+  lsql := 'insert into  (teste) values (''M'')';
   lSqlBuilder := TSqlBuilderInsert.Create;
   lsql2 := StringReplace(lSqlBuilder.Add('teste','M').ToString.Trim,sLineBreak,'',[rfReplaceAll,rfIgnoreCase]);
   Assert.AreEqual(lsql.Trim,Trim(lsql2));
@@ -155,7 +155,7 @@ var
  lSqlBuilder : iSqlBuilder;
  lsql,lsql2 : string;
 begin
-  lsql := 'insert into  (teste) values (1) ;';
+  lsql := 'insert into  (teste) values (1)';
   lSqlBuilder := TSqlBuilderInsert.Create;
   lsql2 := StringReplace(lSqlBuilder.Add('teste',1).ToString.Trim,sLineBreak,'',[rfReplaceAll,rfIgnoreCase]);
   Assert.AreEqual(lsql.Trim,Trim(lsql2));
@@ -166,7 +166,7 @@ var
  lSqlBuilder : iSqlBuilder;
  lsql,lsql2 : string;
 begin
-  lsql := 'insert into  (teste) values (1) ;';
+  lsql := 'insert into  (teste) values (1)';
   lSqlBuilder := TSqlBuilderInsert.Create;
   lsql2 := StringReplace(lSqlBuilder.Add('teste',1).Criterio('where').ToString.Trim,sLineBreak,'',[rfReplaceAll,rfIgnoreCase]);
   Assert.AreEqual(lsql.Trim,Trim(lsql2));
@@ -178,7 +178,7 @@ var
  lSqlBuilder : iSqlBuilder;
  lsql,lsql2 : string;
 begin
-  lsql := 'insert into FERA (teste) values (1) ;';
+  lsql := 'insert into FERA (teste) values (1)';
   lSqlBuilder := TSqlBuilderInsert.Create;
   lsql2 := StringReplace(lSqlBuilder.Add('teste',1).Tabela('FERA').ToString.Trim,sLineBreak,'',[rfReplaceAll,rfIgnoreCase]);
   Assert.AreEqual(lsql.Trim,Trim(lsql2));

@@ -1,54 +1,44 @@
-unit MegaConexao.SqlBuilder.SqlBuilderInsert;
+unit MegaConexao.SqlBuilder.SqlBuilderUpdateOrInsert;
 
 interface
 
 uses
-    MegaConexao.SqlBuilder.iSqlBuilder, System.Classes, System.SysUtils,
-  System.StrUtils, System.Generics.Collections, System.Variants, MegaConexao.SqlBuilder.SqlBuilderBase;
+  MegaConexao.SqlBuilder.iSqlBuilder, MegaConexao.SqlBuilder.SqlBuilderBase,
+  System.Classes, System.SysUtils;
 
-    type
-      TSqlBuilderInsert = class(TBaseSqlBuilder, ISqlBuilder)
-        private
-          function MontaCampos() : string;
-          function MontaValores() : string;
-        public
-          function Add(Campo: string; Valor: Variant; TamanhoCampo: Integer = 0;
-                       AdicionarParametro: Boolean = True): iSqlBuilder;overload;
-          function Criterio(pCriterio: string): iSqlBuilder;
-          function Tabela(pTabela: string): iSqlBuilder;
-          function ToString: string;override;
-          constructor Create();
-          destructor Destroy;override;
-      end;
+Type TSqlBuilderUpdateOrInsert = class(TBaseSqlBuilder, ISqlBuilder)
+ private
+    function MontaCampos : String;
+    function MontaValores() : string;
+ public
+    function Add(Campo: string; Valor: Variant; TamanhoCampo: Integer = 0;
+      AdicionarParametro: Boolean = True): iSqlBuilder;
+    function Criterio(pCriterio: string): iSqlBuilder;
+    function Tabela(pTabela: string): iSqlBuilder;
+    function ToString: string;
 
+end;
 
 implementation
 
-{ TSqlBuilderInsert }
+uses
+  System.StrUtils, System.Generics.Collections;
 
-function TSqlBuilderInsert.Add(Campo: string; Valor: Variant;
+{ TSqlBuilderUpdateOrInsert }
+
+function TSqlBuilderUpdateOrInsert.Add(Campo: string; Valor: Variant;
   TamanhoCampo: Integer; AdicionarParametro: Boolean): iSqlBuilder;
 begin
   inherited Add(Campo,Valor,TamanhoCampo,AdicionarParametro);
   Result := self;
 end;
 
-constructor TSqlBuilderInsert.Create();
-begin
-  inherited Create();
-end;
-
-function TSqlBuilderInsert.Criterio(pCriterio: string): iSqlBuilder;
+function TSqlBuilderUpdateOrInsert.Criterio(pCriterio: string): iSqlBuilder;
 begin
   result := Self;
 end;
 
-destructor TSqlBuilderInsert.Destroy;
-begin
-  inherited;
-end;
-
-function TSqlBuilderInsert.MontaCampos: string;
+function TSqlBuilderUpdateOrInsert.MontaCampos: String;
 var
   posicao : Integer;
   SeparatorSintax: string;
@@ -83,8 +73,7 @@ begin
   end;
 end;
 
-
-function TSqlBuilderInsert.MontaValores: string;
+function TSqlBuilderUpdateOrInsert.MontaValores: string;
 var
   posicao : Integer;
   SeparatorSintax: string;
@@ -92,7 +81,7 @@ var
   ValorStr : string;
   lListaCampos : TList<TCampo>;
 begin
-  try
+   try
     try
       ValuesSintax := TStringList.Create;
       lListaCampos := RetornaListaCampo;
@@ -122,8 +111,7 @@ begin
   end;
 end;
 
-
-function TSqlBuilderInsert.Tabela(pTabela: string): iSqlBuilder;
+function TSqlBuilderUpdateOrInsert.Tabela(pTabela: string): iSqlBuilder;
 begin
   try
     inherited Tabela(pTabela);
@@ -135,13 +123,13 @@ begin
   end;
 end;
 
-function TSqlBuilderInsert.ToString: string;
+function TSqlBuilderUpdateOrInsert.ToString: string;
 begin
   try
     Result := '';
     if (self.Count > 0) then
     begin
-      Result := 'INSERT INTO ' + NomeTabela + ' (' + MontaCampos +
+      Result := 'UPDATE OR INSERT INTO ' + NomeTabela + ' (' + MontaCampos +
         ') VALUES (' + sLineBreak + MontaValores + ')';
     end
   except on E : Exception do

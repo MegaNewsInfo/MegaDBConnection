@@ -244,7 +244,6 @@ begin
 
   lQuery.ExecuteSql(lSqlBuilder);
 
-
   Assert.AreEqual(lQuery.SQL('select * from tabela where id = 1')
                 .DataSet.FieldByName('nome')
                 .AsString, 'Teste Update');
