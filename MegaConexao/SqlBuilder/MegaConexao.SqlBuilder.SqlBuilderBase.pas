@@ -32,15 +32,6 @@ type
                                     adiciona: Boolean);
         procedure AdicionaComQuoted(campo: string; valor: string;
                                     adiciona: Boolean);
-        procedure AddDataHora(campo: string; valor: TDateTime;
-                              AdicionarParametro: Boolean = true);
-        procedure AddHora(campo: String; valor: TDateTime;
-                          AdicionarParametro: Boolean = true);
-        procedure AddDataHoje(campo: string; AdicionarParametro: Boolean = true);
-        procedure AddFloat(campo: string; valor: Double;
-                           AdicionarParametro: Boolean = true);
-        procedure AddBoolean(campo: string; valor: Boolean;
-                             AdicionarParametro: Boolean = true);
         procedure Add(campo: string; valor: String; TamanhoCampo: integer = 0;
                       AdicionarParametro: Boolean = true); overload;
         procedure Add(campo: string; valor: integer;
@@ -52,8 +43,6 @@ type
         procedure Add(campo: string; valor: Boolean;
                       AdicionarParametro: Boolean = true); overload;
         procedure AddExpr(campo: string; valor: string;
-                          AdicionarParametro: Boolean = true);
-        procedure AddData(campo: string; valor: TDateTime;
                           AdicionarParametro: Boolean = true);
         procedure AddNull(campo: string);
         function GetCount : Integer;
@@ -137,46 +126,10 @@ begin
   end;
 end;
 
-procedure TBaseSqlBuilder.AddBoolean(campo: string; valor,
-  AdicionarParametro: Boolean);
-begin
-  AdicionaComQuoted(campo, IfThen(valor, 'S', 'N'), AdicionarParametro);
-end;
-
-procedure TBaseSqlBuilder.AddData(campo: string; valor: TDateTime;
-          AdicionarParametro: Boolean = true);
-begin
-  Add(campo, valor, SomenteData, AdicionarParametro);
-end;
-
-procedure TBaseSqlBuilder.AddDataHoje(campo: string;
-  AdicionarParametro: Boolean);
-begin
-  Add(campo, now, SomenteData, AdicionarParametro);
-end;
-
-procedure TBaseSqlBuilder.AddDataHora(campo: string; valor: TDateTime;
-  AdicionarParametro: Boolean);
-begin
-  Add(campo, now, SomenteHora, AdicionarParametro);
-end;
-
 procedure TBaseSqlBuilder.AddExpr(campo, valor: string;
   AdicionarParametro: Boolean);
 begin
   AdicionaSemQuoted(campo, valor, AdicionarParametro);
-end;
-
-procedure TBaseSqlBuilder.AddFloat(campo: string; valor: Double;
-  AdicionarParametro: Boolean);
-begin
-  Add(campo, valor, AdicionarParametro);
-end;
-
-procedure TBaseSqlBuilder.AddHora(campo: String; valor: TDateTime;
-  AdicionarParametro: Boolean);
-begin
-  Add(campo, valor, SomenteHora, AdicionarParametro);
 end;
 
 procedure TBaseSqlBuilder.AddNull(campo: string);
