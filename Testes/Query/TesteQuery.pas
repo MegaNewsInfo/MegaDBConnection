@@ -5,7 +5,8 @@ uses
   DUnitX.TestFramework, MegaConexao.Conexao.iMegaConexao,
   MegaConexao.Logger.iLogger, MegaConexao.SqlBuilder.iSqlBuilder,
   MegaConexao.SqlBuilder.SqlBuilderInsert,
-  MegaConexao.SqlBuilder.SqlBuilderUpdate;
+  MegaConexao.SqlBuilder.SqlBuilderUpdate,
+  MegaConexao.SqlBuilder.SqlBuilderDelete;
 
 type
 
@@ -31,8 +32,12 @@ type
     procedure TestSQLBuilderInsertFailed;
     [Test]
     procedure TestSQLBuilderUpdateSucess;
-     [Test]
+    [Test]
     procedure TestSQLBuilderUpdateFailed;
+    [Test]
+    procedure TestSQLBuilderDeleteSucess;
+    [Test]
+    procedure TestSQLBuilderDeleteFailed;
 
   end;
 
@@ -91,6 +96,61 @@ begin
      ILogger(p)._Release;
    end;
 
+end;
+
+procedure TTesteQuery.TestSQLBuilderDeleteFailed;
+var
+  lQuery : IQuery;
+  comando : string;
+  lSqlBuilder : iSqlBuilder;
+begin
+  lSqlBuilder := TSqlBuilderInsert.Create;
+  lSqlBuilder.Add('id',1)
+             .Add('nome','Teste')
+             .Tabela('tabela');
+
+  lQuery := TMegaQuery.create(FMegaConexao,FLogger);
+
+  lQuery.ExecuteSql(lSqlBuilder);
+
+  lSqlBuilder := TSQLBuilderDelete.Create;
+  lSqlBuilder.Tabela('tabela')
+             .Criterio('id = 2');
+
+  lQuery.ExecuteSql(lSqlBuilder);
+
+  Assert.IsTrue(lQuery.SQL('select * from tabela where id = 1')
+                      .DataSet.RecordCount > 0);
+
+  lQuery.ExecuteSql('delete from tabela');
+end;
+
+procedure TTesteQuery.TestSQLBuilderDeleteSucess;
+var
+  lQuery : IQuery;
+  comando : string;
+  lSqlBuilder : iSqlBuilder;
+begin
+  lSqlBuilder := TSqlBuilderInsert.Create;
+  lSqlBuilder.Add('id',1)
+             .Add('nome','Teste')
+             .Tabela('tabela');
+
+  lQuery := TMegaQuery.create(FMegaConexao,FLogger);
+
+  lQuery.ExecuteSql(lSqlBuilder);
+
+  lSqlBuilder := TSQLBuilderDelete.Create;
+  lSqlBuilder.Tabela('tabela')
+             .Criterio('id = 1');
+
+  lQuery.ExecuteSql(lSqlBuilder);
+
+
+  Assert.IsTrue(lQuery.SQL('select * from tabela where id = 1')
+                .DataSet.RecordCount = 0);
+
+  lQuery.ExecuteSql('delete from tabela');
 end;
 
 procedure TTesteQuery.TestSQLBuilderInsertFailed;
