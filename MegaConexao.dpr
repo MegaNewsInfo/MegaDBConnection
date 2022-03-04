@@ -19,7 +19,8 @@ uses
   MegaConexao.Query.MegaQuery in 'MegaConexao\Query\MegaConexao.Query.MegaQuery.pas',
   MegaConexao.SqlBuilder.SqlBuilderInsert in 'MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderInsert.pas',
   MegaConexao.SqlBuilder.SqlBuilderBase in 'MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderBase.pas',
-  MegaConexao.SqlBuilder.SqlBuilderUpdate in 'MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderUpdate.pas';
+  MegaConexao.SqlBuilder.SqlBuilderUpdate in 'MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderUpdate.pas',
+  MegaConexao.SqlBuilder.SqlBuilderDelete in 'MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderDelete.pas';
 
 {$R *.res}
 

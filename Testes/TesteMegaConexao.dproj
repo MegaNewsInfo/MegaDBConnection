@@ -146,6 +146,7 @@
         <DCCReference Include="..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderInsert.pas"/>
         <DCCReference Include="..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderBase.pas"/>
         <DCCReference Include="..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderUpdate.pas"/>
+        <DCCReference Include="SQLBuilder\TesteSQLBuiderInsert.pas"/>
         <DCCReference Include="..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderDelete.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

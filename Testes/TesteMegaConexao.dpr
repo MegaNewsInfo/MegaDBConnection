@@ -32,6 +32,7 @@ uses
   MegaConexao.SqlBuilder.SqlBuilderInsert in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderInsert.pas',
   MegaConexao.SqlBuilder.SqlBuilderBase in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderBase.pas',
   MegaConexao.SqlBuilder.SqlBuilderUpdate in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderUpdate.pas',
+  TesteSQLBuiderInsert in 'SQLBuilder\TesteSQLBuiderInsert.pas',
   MegaConexao.SqlBuilder.SqlBuilderDelete in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderDelete.pas';
 
 var

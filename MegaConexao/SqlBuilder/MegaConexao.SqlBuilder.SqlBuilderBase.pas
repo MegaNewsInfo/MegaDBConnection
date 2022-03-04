@@ -32,8 +32,6 @@ type
                                     adiciona: Boolean);
         procedure AdicionaComQuoted(campo: string; valor: string;
                                     adiciona: Boolean);
-        procedure AddSemAspas(campo: string; valor: string;
-                              AdicionarParametro: Boolean = true);
         procedure AddDataHora(campo: string; valor: TDateTime;
                               AdicionarParametro: Boolean = true);
         procedure AddHora(campo: String; valor: TDateTime;
@@ -184,12 +182,6 @@ end;
 procedure TBaseSqlBuilder.AddNull(campo: string);
 begin
   AddExpr(campo, 'NULL');
-end;
-
-procedure TBaseSqlBuilder.AddSemAspas(campo, valor: string;
-  AdicionarParametro: Boolean);
-begin
-  AddExpr(campo, valor, AdicionarParametro);
 end;
 
 procedure TBaseSqlBuilder.AdicionaComQuoted(campo, valor: string;
