@@ -1,4 +1,4 @@
-unit TesteSQLBuiderUpdate;
+unit TesteSQLBuiderDelete;
 
 interface
 
@@ -6,10 +6,11 @@ uses
   DUnitX.TestFramework, System.SysUtils,
   MegaConexao.SqlBuilder.iSqlBuilder, MegaConexao.SqlBuilder.SqlBuilderUpdate;
 
+
 type
 
   [TestFixture]
-  TesteSQLBuilderUpdate = class(TObject) 
+  TesteSQLBuilderDelete = class(TObject) 
   public
 
   [Test]
@@ -21,39 +22,43 @@ type
 
 implementation
 
+uses
+  MegaConexao.SqlBuilder.SqlBuilderDelete;
 
-{ TesteSQLBuilderUpdate }
 
-procedure TesteSQLBuilderUpdate.TesteCriterio;
+{ TesteSQLBuilderDelete }
+
+procedure TesteSQLBuilderDelete.TesteCriterio;
 var
  lSqlBuilder : iSqlBuilder;
  lsql,lsql2 : string;
 begin
 
-  lsql := 'update FERA set  CAMPO = ''NORMAL'' WHERE  1=1 ';
-  lSqlBuilder := TSqlBuilderUpdate.Create;
-  lsql2 := StringReplace(lSqlBuilder.Add('CAMPO','NORMAL').
+  lsql := 'delete from FERA WHERE   1=1 ';
+  lSqlBuilder := TSqlBuilderDelete.Create;
+  lsql2 := StringReplace(lSqlBuilder.
            Tabela('FERA').Criterio('where 1=1').ToString.Trim,
            sLineBreak,'',[rfReplaceAll,rfIgnoreCase]);
   Assert.AreEqual(lsql.Trim,Trim(lsql2));
 
 end;
 
-procedure TesteSQLBuilderUpdate.TesteTabela;
+procedure TesteSQLBuilderDelete.TesteTabela;
 var
  lSqlBuilder : iSqlBuilder;
  lsql,lsql2 : string;
 begin
 
-  lsql := 'update FERA set  CAMPO = ''NORMAL'' ';
-  lSqlBuilder := TSqlBuilderUpdate.Create;
-  lsql2 := StringReplace(lSqlBuilder.Add('CAMPO','NORMAL').
+  lsql := 'delete from FERA ';
+  lSqlBuilder := TSqlBuilderDelete.Create;
+  lsql2 := StringReplace(lSqlBuilder.
            Tabela('FERA').ToString.Trim,
            sLineBreak,'',[rfReplaceAll,rfIgnoreCase]);
   Assert.AreEqual(lsql.Trim,Trim(lsql2));
 
+
 end;
 
 initialization
-  TDUnitX.RegisterTestFixture(TesteSQLBuilderUpdate);
+  TDUnitX.RegisterTestFixture(TesteSQLBuilderDelete);
 end.
