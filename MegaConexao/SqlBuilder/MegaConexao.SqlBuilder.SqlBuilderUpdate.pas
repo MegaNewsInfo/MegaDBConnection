@@ -102,19 +102,22 @@ begin
 end;
 
 function TSQLBuilderUpdate.ToString: string;
+
 begin
   Result := '';
 
   if (self.Count > 0) then
   begin
 
-    Result := 'UPDATE ' + NomeTabela + ' SET  ' + #13 +
-              MontaCampos + #13 +
-              IfThen(FCriterio <> '', ' WHERE ' + #13 +
+
+
+    Result := 'UPDATE ' + NomeTabela + ' SET  ' + sLineBreak +
+              MontaCampos + sLineBreak +
+              IfThen(FCriterio <> '', ' WHERE ' + sLineBreak +
               StringReplace(FCriterio,
                             'WHERE',
                             '',
-                            [rfReplaceAll]),
+                            [rfReplaceAll,rfIgnoreCase]),
                             '');
 
 

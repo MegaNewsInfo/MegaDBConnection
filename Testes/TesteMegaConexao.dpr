@@ -33,7 +33,8 @@ uses
   MegaConexao.SqlBuilder.SqlBuilderBase in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderBase.pas',
   MegaConexao.SqlBuilder.SqlBuilderUpdate in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderUpdate.pas',
   TesteSQLBuiderInsert in 'SQLBuilder\TesteSQLBuiderInsert.pas',
-  MegaConexao.SqlBuilder.SqlBuilderDelete in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderDelete.pas';
+  MegaConexao.SqlBuilder.SqlBuilderDelete in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderDelete.pas',
+  TesteSQLBuiderUpdate in 'SQLBuilder\TesteSQLBuiderUpdate.pas';
 
 var
   runner : ITestRunner;
