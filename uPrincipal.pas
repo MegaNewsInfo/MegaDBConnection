@@ -11,7 +11,6 @@ uses
 
 type
   TformPrincipal = class(TForm)
-    FDConnection1: TFDConnection;
   private
     { Private declarations }
   public

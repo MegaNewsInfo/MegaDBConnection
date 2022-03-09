@@ -36,7 +36,7 @@ VAR
  Llogger : Ilogger;
 begin
    case pTipoConexao of
-     tcFirebird: Result := TMegaQuery.Create( TConexaoFireBird.Create, TLogger.Create);
+     tcFirebird: Result := TMegaQuery.Create( TConexaoFireBird.GetInstance, TLogger.Create);
      //tcSqlite: Result := TMegaQuery.Create( .Create, TLogger.Create);
    end;
 end;

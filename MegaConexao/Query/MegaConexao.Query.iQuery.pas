@@ -12,6 +12,10 @@ type
     procedure ExecuteSql(value: string); overload;
     procedure ExecuteSql(pSql:iSqlBuilder); overload;
     function DataSet: TDataSet;
+    procedure StartTransaction;
+    procedure CommitTransaction;
+    procedure RollbackTransaction;
+
 
   end;
 
