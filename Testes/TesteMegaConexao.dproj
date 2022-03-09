@@ -126,12 +126,33 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="Utils\TesteCriadorDePasta.pas"/>
-        <DCCReference Include="..\MegaConexao\Utils\MegaConexao.Utils.CriadorDePasta.pas"/>
-        <DCCReference Include="..\MegaConexao\Utils\MegaConexao.Utils.CriadorDeCaminho.pas"/>
         <DCCReference Include="Logger\TesteLogger.pas"/>
         <DCCReference Include="..\MegaConexao\Logger\MegaConexao.Logger.Logger.pas"/>
         <DCCReference Include="..\MegaConexao\Logger\MegaConexao.Logger.iLogger.pas"/>
+        <DCCReference Include="Conexao\MegaConexao.Testes.Conexao.LeitorParametrosSQLite.pas"/>
+        <DCCReference Include="..\MegaConexao\Conexao\ParametroConexao\MegaConexao.Conexao.ParametroConexao.IParametroConexaoFireBird.pas"/>
+        <DCCReference Include="Conexao\MegaConexao.Testes.Conexao.ConexaoSQLite.pas"/>
+        <DCCReference Include="..\MegaConexao\Conexao\MegaConexao.Conexao.iMegaConexao.pas"/>
+        <DCCReference Include="Query\TesteQuery.pas"/>
+        <DCCReference Include="..\MegaConexao\Conexao\MegaConexao.Conexao.ConexaoFireBird.pas"/>
+        <DCCReference Include="..\MegaConexao\Query\MegaConexao.Query.iQuery.pas"/>
+        <DCCReference Include="..\MegaConexao\Query\MegaConexao.Query.MegaQuery.pas"/>
+        <DCCReference Include="..\MegaConexao\Conexao\ParametroConexao\MegaConexao.Conexao.ParametroConexao.LeitorParametrosFireBird.pas"/>
+        <DCCReference Include="..\MegaConexao\Utils\MegaConexao.Utils.CriadorDeCaminho.pas"/>
+        <DCCReference Include="..\MegaConexao\Utils\MegaConexao.Utils.CriadorDePasta.pas"/>
         <DCCReference Include="..\MegaConexao\Utils\MegaConexao.Utils.CriadorNomeArquivo.pas"/>
+        <DCCReference Include="..\MegaConexao\Utils\MegaConexao.Utils.FerramentasApiWindows.pas"/>
+        <DCCReference Include="..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.iSqlBuilder.pas"/>
+        <DCCReference Include="..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderInsert.pas"/>
+        <DCCReference Include="..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderBase.pas"/>
+        <DCCReference Include="..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderUpdate.pas"/>
+        <DCCReference Include="SQLBuilder\TesteSQLBuiderInsert.pas"/>
+        <DCCReference Include="..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderDelete.pas"/>
+        <DCCReference Include="SQLBuilder\TesteSQLBuiderUpdate.pas"/>
+        <DCCReference Include="SQLBuilder\TesteSQLBuiderDelete.pas"/>
+        <DCCReference Include="..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderUpdateOrInsert.pas"/>
+        <DCCReference Include="SQLBuilder\TesteSQLBuiderUpdateOrInsert.pas"/>
+        <DCCReference Include="..\MegaConexao\Conexao\ParametroConexao\MegaConexao.Conexao.ParametroConexao.IParametroConexaoSQLite.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

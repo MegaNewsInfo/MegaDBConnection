@@ -3,29 +3,31 @@ unit MegaConexao.Conexao.ConexaoFireBird;
 interface
 
 uses
- FireDAC.Comp.Client,   MegaConexao.Conexao.ParametroConexao.LeitorParametrosFireBird,
- Data.DB, MegaConexao.Conexao.iMegaConexao;
+ FireDAC.Comp.Client, FireDAC.Phys.FB,FireDAC.Phys.IB,FireDAC.Phys.Intf,FireDAC.Phys,FireDAC.Phys.FBDef,
+  MegaConexao.Conexao.ParametroConexao.LeitorParametrosFireBird,FireDAC.Stan.Def, FireDAC.DApt,FireDac.Stan.Async,
+ Data.DB, MegaConexao.Conexao.iMegaConexao, MegaConexao.Conexao.ParametroConexao.IParametroConexaoFireBird;
 
 
 type
   TConexaoFireBird = class(TInterfacedObject,iMegaConexao)
     private
       FConexao : TFDConnection;
-      FParametrosConexaoFiredac: TLeitorParametrosFireBird;
-
 
     public
-      function Connection :TCustomConnection;
+      function Connection :TFDCustomConnection;
       procedure IniciaTransacao();
       procedure CommitaTransacao();
       procedure RollBackTransacao();
-      constructor Create;
+      constructor Create(pLeitorParametros : ILeitorParametroConexaoFireBird = nil);
 
 
   end;
 
 
 implementation
+
+uses
+  System.SysUtils;
 
 { TConexaoFireBird }
 
@@ -34,27 +36,28 @@ begin
    FConexao.Commit;
 end;
 
-function TConexaoFireBird.Connection: TCustomConnection;
+function TConexaoFireBird.Connection: TFDCustomConnection;
 begin
  Result := FConexao;
 end;
 
 
-constructor TConexaoFireBird.Create;
+constructor TConexaoFireBird.Create(pLeitorParametros : ILeitorParametroConexaoFireBird = nil);
+var
+  lParametros : TParametrosConexaoFireBird;
 begin
 
   if not Assigned(FConexao) then begin
     FConexao := TFDConnection.Create(nil);
 
-    FParametrosConexaoFiredac := TLeitorParametrosFireBird.Create;
+    lParametros := pLeitorParametros.LerParametros();
 
-    FParametrosConexaoFiredac.LerParametros();
-
-    FConexao.Params.Database:= FParametrosConexaoFiredac.Parametros.DATA_BASE;
-    FConexao.Params.UserName:= FParametrosConexaoFiredac.Parametros.USER_NAME;
-    FConexao.Params.Password:= FParametrosConexaoFiredac.Parametros.PASSWORD;
-    FConexao.Params.Values['Port'] := FParametrosConexaoFiredac.Parametros.PORT.ToString;
+    FConexao.Params.Database:= lParametros.DATA_BASE;
+    FConexao.Params.UserName:= lParametros.USER_NAME;
+    FConexao.Params.Password:= lParametros.PASSWORD;
+    FConexao.Params.Values['Port'] := inttostr(lParametros.PORT);
     FConexao.DriverName:= 'FB';
+
     FConexao.Connected := True;
 
   end;

@@ -11,6 +11,7 @@ type
   [TestFixture]
   TTesteLogger = class(TObject)
   public
+
   [Test]
   procedure TesteGravarTexto();
   end;
