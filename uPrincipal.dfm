@@ -13,8 +13,4 @@ object formPrincipal: TformPrincipal
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
-  object FDConnection1: TFDConnection
-    Left = 192
-    Top = 104
-  end
 end

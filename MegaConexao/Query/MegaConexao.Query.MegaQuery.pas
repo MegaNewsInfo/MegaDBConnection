@@ -19,6 +19,9 @@ uses
     procedure ExecuteSql(pSql:iSqlBuilder); overload;
     procedure ExecuteSql(value: string); overload;
     function DataSet: TDataSet;
+     procedure StartTransaction;
+    procedure CommitTransaction;
+    procedure RollbackTransaction;
 
     constructor Create(pMegaConexao : iMegaConexao; pLogger : Ilogger);
 
@@ -31,6 +34,11 @@ uses
   System.SysUtils;
 
 { TMegaQuery }
+
+procedure TMegaQuery.CommitTransaction;
+begin
+ FQuery.Connection.Commit;
+end;
 
 constructor TMegaQuery.Create(pMegaConexao: iMegaConexao; pLogger: Ilogger);
 begin
@@ -67,6 +75,11 @@ begin
  end;
 end;
 
+procedure TMegaQuery.RollbackTransaction;
+begin
+  FQuery.Connection.Rollback;
+end;
+
 function TMegaQuery.SQL(value: string): iQuery;
 var logText : string;
 begin
@@ -86,6 +99,11 @@ begin
       raise Exception.Create(E.Message);
    end;
  end;
+end;
+
+procedure TMegaQuery.StartTransaction;
+begin
+ FQuery.Connection.StartTransaction;
 end;
 
 procedure TMegaQuery.ExecuteSql(pSql: iSqlBuilder);

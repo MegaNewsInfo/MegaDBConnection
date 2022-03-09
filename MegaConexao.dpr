@@ -14,7 +14,6 @@ uses
   MegaConexao.Utils.CriadorDePasta in 'MegaConexao\Utils\MegaConexao.Utils.CriadorDePasta.pas',
   MegaConexao.Utils.CriadorDeCaminho in 'MegaConexao\Utils\MegaConexao.Utils.CriadorDeCaminho.pas',
   MegaConexao.Utils.CriadorNomeArquivo in 'MegaConexao\Utils\MegaConexao.Utils.CriadorNomeArquivo.pas',
-  MegaConexao.Conexao.ParametroConexao in 'MegaConexao.Conexao.ParametroConexao.pas',
   MegaConexao.Conexao.ParametroConexao.IParametroConexaoFireBird in 'MegaConexao\Conexao\ParametroConexao\MegaConexao.Conexao.ParametroConexao.IParametroConexaoFireBird.pas',
   MegaConexao.Query.MegaQuery in 'MegaConexao\Query\MegaConexao.Query.MegaQuery.pas',
   MegaConexao.SqlBuilder.SqlBuilderInsert in 'MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderInsert.pas',

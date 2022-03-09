@@ -4,16 +4,21 @@ interface
 
 uses
  FireDAC.Comp.Client, FireDAC.Phys.FB,FireDAC.Phys.IB,FireDAC.Phys.Intf,FireDAC.Phys,FireDAC.Phys.FBDef,
-  MegaConexao.Conexao.ParametroConexao.LeitorParametrosFireBird,FireDAC.Stan.Def, FireDAC.DApt,FireDac.Stan.Async,
+  MegaConexao.Conexao.ParametroConexao.LeitorParametrosFireBird,FireDAC.Stan.Def, FireDAC.DApt,FireDac.Stan.Async,FireDAC.VCLUI.Wait,
  Data.DB, MegaConexao.Conexao.iMegaConexao, MegaConexao.Conexao.ParametroConexao.IParametroConexaoFireBird;
 
 
 type
   TConexaoFireBird = class(TInterfacedObject,iMegaConexao)
     private
-      FConexao : TFDConnection;
+       FConexao : TFDConnection;
+      class var FConexaoFirebird : TConexaoFireBird;
+
+
 
     public
+      class function GetInstance(pLeitorParametros : ILeitorParametroConexaoFireBird = nil): TConexaoFireBird; static;
+
       function Connection :TFDCustomConnection;
       procedure IniciaTransacao();
       procedure CommitaTransacao();
@@ -62,6 +67,13 @@ begin
 
   end;
 
+end;
+
+class function TConexaoFireBird.GetInstance(pLeitorParametros : ILeitorParametroConexaoFireBird = nil): TConexaoFireBird;
+begin
+ If FConexaoFirebird = nil Then
+      FConexaoFirebird := TConexaoFireBird.Create(pLeitorParametros);//objeto instanciado através do Finstance
+    Result := FConexaoFirebird;//retorna o objeto
 end;
 
 procedure TConexaoFireBird.IniciaTransacao;
