@@ -16,7 +16,7 @@ uses
   MegaConexao.Logger.Logger in '..\MegaConexao\Logger\MegaConexao.Logger.Logger.pas',
   MegaConexao.Logger.iLogger in '..\MegaConexao\Logger\MegaConexao.Logger.iLogger.pas',
   MegaConexao.Testes.Conexao.LeitorParametrosSQLite in 'Conexao\MegaConexao.Testes.Conexao.LeitorParametrosSQLite.pas',
-  MegaConexao.Conexao.ParametroConexao.IParametroConexao in '..\MegaConexao\Conexao\ParametroConexao\MegaConexao.Conexao.ParametroConexao.IParametroConexao.pas',
+  MegaConexao.Conexao.ParametroConexao.IParametroConexaoFireBird in '..\MegaConexao\Conexao\ParametroConexao\MegaConexao.Conexao.ParametroConexao.IParametroConexaoFireBird.pas',
   MegaConexao.Testes.Conexao.ConexaoSQLite in 'Conexao\MegaConexao.Testes.Conexao.ConexaoSQLite.pas',
   MegaConexao.Conexao.iMegaConexao in '..\MegaConexao\Conexao\MegaConexao.Conexao.iMegaConexao.pas',
   TesteQuery in 'Query\TesteQuery.pas',
@@ -37,7 +37,8 @@ uses
   TesteSQLBuiderUpdate in 'SQLBuilder\TesteSQLBuiderUpdate.pas',
   TesteSQLBuiderDelete in 'SQLBuilder\TesteSQLBuiderDelete.pas',
   MegaConexao.SqlBuilder.SqlBuilderUpdateOrInsert in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderUpdateOrInsert.pas',
-  TesteSQLBuiderUpdateOrInsert in 'SQLBuilder\TesteSQLBuiderUpdateOrInsert.pas';
+  TesteSQLBuiderUpdateOrInsert in 'SQLBuilder\TesteSQLBuiderUpdateOrInsert.pas',
+  MegaConexao.Conexao.ParametroConexao.IParametroConexaoSQLite in '..\MegaConexao\Conexao\ParametroConexao\MegaConexao.Conexao.ParametroConexao.IParametroConexaoSQLite.pas';
 
 var
   runner : ITestRunner;

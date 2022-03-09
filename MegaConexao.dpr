@@ -15,7 +15,7 @@ uses
   MegaConexao.Utils.CriadorDeCaminho in 'MegaConexao\Utils\MegaConexao.Utils.CriadorDeCaminho.pas',
   MegaConexao.Utils.CriadorNomeArquivo in 'MegaConexao\Utils\MegaConexao.Utils.CriadorNomeArquivo.pas',
   MegaConexao.Conexao.ParametroConexao in 'MegaConexao.Conexao.ParametroConexao.pas',
-  MegaConexao.Conexao.ParametroConexao.IParametroConexao in 'MegaConexao\Conexao\ParametroConexao\MegaConexao.Conexao.ParametroConexao.IParametroConexao.pas',
+  MegaConexao.Conexao.ParametroConexao.IParametroConexaoFireBird in 'MegaConexao\Conexao\ParametroConexao\MegaConexao.Conexao.ParametroConexao.IParametroConexaoFireBird.pas',
   MegaConexao.Query.MegaQuery in 'MegaConexao\Query\MegaConexao.Query.MegaQuery.pas',
   MegaConexao.SqlBuilder.SqlBuilderInsert in 'MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderInsert.pas',
   MegaConexao.SqlBuilder.SqlBuilderBase in 'MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderBase.pas',
@@ -23,7 +23,9 @@ uses
   MegaConexao.SqlBuilder.SqlBuilderDelete in 'MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderDelete.pas',
   MegaConexao.Factories.FactoryQuery in 'MegaConexao\Factories\MegaConexao.Factories.FactoryQuery.pas',
   MegaConexao.Factories.FactorySqlBuilder in 'MegaConexao\Factories\MegaConexao.Factories.FactorySqlBuilder.pas',
-  MegaConexao.SqlBuilder.SqlBuilderUpdateOrInsert in 'MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderUpdateOrInsert.pas';
+  MegaConexao.SqlBuilder.SqlBuilderUpdateOrInsert in 'MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderUpdateOrInsert.pas',
+  MegaConexao.Conexao.ParametroConexao.IParametroConexaoSQLite in 'MegaConexao\Conexao\ParametroConexao\MegaConexao.Conexao.ParametroConexao.IParametroConexaoSQLite.pas',
+  MegaConexao.Conexao.ConexaoSQLite in 'MegaConexao\Conexao\MegaConexao.Conexao.ConexaoSQLite.pas';
 
 {$R *.res}
 

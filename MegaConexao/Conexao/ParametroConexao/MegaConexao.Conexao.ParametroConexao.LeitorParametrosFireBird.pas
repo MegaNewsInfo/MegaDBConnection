@@ -3,19 +3,19 @@ unit MegaConexao.Conexao.ParametroConexao.LeitorParametrosFireBird;
 interface
 
 uses
-  System.SysUtils, System.IniFiles, MegaConexao.Utils.FerramentasApiWindows,MegaConexao.Conexao.ParametroConexao.IParametroConexao;
+  System.SysUtils, System.IniFiles, MegaConexao.Utils.FerramentasApiWindows,MegaConexao.Conexao.ParametroConexao.IParametroConexaoFireBird;
 
 type
 
 
- TLeitorParametrosFireBird = class(TInterfacedObject, IParametroConexao)
+ TLeitorParametrosFireBird = class(TInterfacedObject, ILeitorParametroConexaoFireBird)
    private
-     fParametros : TParametrosConexaoFireDac;
+     fParametros : TParametrosConexaoFireBird;
      procedure LerArquivoINI;
 
    public
 
-     function LerParametros:TParametrosConexaoFireDac;
+     function LerParametros:TParametrosConexaoFireBird;
 
  end;
 
@@ -64,7 +64,7 @@ begin
 
 end;
 
-function TLeitorParametrosFireBird.LerParametros: TParametrosConexaoFireDac;
+function TLeitorParametrosFireBird.LerParametros: TParametrosConexaoFireBird;
 begin
  LerArquivoINI;
  Result := fParametros;

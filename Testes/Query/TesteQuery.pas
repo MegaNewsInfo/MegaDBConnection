@@ -76,7 +76,7 @@ begin
 
 
 
-   FMegaConexao := TConexaoSqlite.Create('Tabela',lFields);
+   FMegaConexao := TConexaoSqliteMemory.Create('Tabela',lFields);
    FLogger := TLogger.Create;
 end;
 

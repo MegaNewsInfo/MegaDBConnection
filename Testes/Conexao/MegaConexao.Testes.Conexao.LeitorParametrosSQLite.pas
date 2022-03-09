@@ -3,28 +3,26 @@ unit MegaConexao.Testes.Conexao.LeitorParametrosSQLite;
 interface
 
 uses
-  MegaConexao.Conexao.ParametroConexao.IParametroConexao;
+  MegaConexao.Conexao.ParametroConexao.IParametroConexaoSQLite;
+
 
 type
-  TLeitorParametrosSQLite = class(TInterfacedObject, IParametroConexao)
+  TLeitorParametrosSQLite = class(TInterfacedObject, ILeitorParametroConexaoSQLite)
 
 
   public
-    function LerParametros: TParametrosConexaoFireDac;
+    function LerParametros: TParametrosConexaoSQlite;
   end;
 
 implementation
 
 { TLeitorParametrosSQLite }
 
-function TLeitorParametrosSQLite.LerParametros: TParametrosConexaoFireDac;
+function TLeitorParametrosSQLite.LerParametros: TParametrosConexaoSQlite;
 var
-  lParametrosConexaoFireDac : TParametrosConexaoFireDac;
+  lParametrosConexaoFireDac : TParametrosConexaoSQlite;
 begin
   lParametrosConexaoFireDac.DATA_BASE := '';
-  lParametrosConexaoFireDac.USER_NAME := '';
-  lParametrosConexaoFireDac.PORT := 0;
-  lParametrosConexaoFireDac.PASSWORD := '';
 
   Result := lParametrosConexaoFireDac
 end;

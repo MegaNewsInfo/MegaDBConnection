@@ -5,22 +5,20 @@ interface
 uses
  FireDAC.Comp.Client, FireDAC.Phys.FB,FireDAC.Phys.IB,FireDAC.Phys.Intf,FireDAC.Phys,FireDAC.Phys.FBDef,
   MegaConexao.Conexao.ParametroConexao.LeitorParametrosFireBird,FireDAC.Stan.Def, FireDAC.DApt,FireDac.Stan.Async,
- Data.DB, MegaConexao.Conexao.iMegaConexao, MegaConexao.Conexao.ParametroConexao.IParametroConexao;
+ Data.DB, MegaConexao.Conexao.iMegaConexao, MegaConexao.Conexao.ParametroConexao.IParametroConexaoFireBird;
 
 
 type
   TConexaoFireBird = class(TInterfacedObject,iMegaConexao)
     private
       FConexao : TFDConnection;
-      FParametrosConexaoFiredac: TLeitorParametrosFireBird;
-
 
     public
       function Connection :TFDCustomConnection;
       procedure IniciaTransacao();
       procedure CommitaTransacao();
       procedure RollBackTransacao();
-      constructor Create;
+      constructor Create(pLeitorParametros : ILeitorParametroConexaoFireBird = nil);
 
 
   end;
@@ -44,17 +42,15 @@ begin
 end;
 
 
-constructor TConexaoFireBird.Create;
+constructor TConexaoFireBird.Create(pLeitorParametros : ILeitorParametroConexaoFireBird = nil);
 var
-  lParametros : TParametrosConexaoFireDac;
+  lParametros : TParametrosConexaoFireBird;
 begin
 
   if not Assigned(FConexao) then begin
     FConexao := TFDConnection.Create(nil);
 
-    FParametrosConexaoFiredac := TLeitorParametrosFireBird.Create;
-
-    lParametros := FParametrosConexaoFiredac.LerParametros();
+    lParametros := pLeitorParametros.LerParametros();
 
     FConexao.Params.Database:= lParametros.DATA_BASE;
     FConexao.Params.UserName:= lParametros.USER_NAME;

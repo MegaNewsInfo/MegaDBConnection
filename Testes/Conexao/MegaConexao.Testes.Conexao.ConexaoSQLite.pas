@@ -5,7 +5,8 @@ interface
 uses
   MegaConexao.Conexao.iMegaConexao, Data.DB,FireDAC.Comp.Client, FireDAC.Stan.Consts,
   FireDAC.Phys.SQLite, FireDAC.Stan.Def, FireDAC.DApt ,FireDAC.Phys.SQLiteDef,FireDAC.Stan.ExprFuncs,FireDAC.Phys.SQLiteVDataSet, 
-  System.Classes, System.Generics.Collections,FireDac.Stan.Async;
+  System.Classes, System.Generics.Collections,FireDac.Stan.Async,
+  MegaConexao.Testes.Conexao.LeitorParametrosSQLite;
 
 type
    TCampo = record
@@ -14,7 +15,7 @@ type
        tamanho : integer
    end;
 
-TConexaoSqlite = class(TInterfacedObject, IMegaConexao)
+TConexaoSqliteMemory = class(TInterfacedObject, IMegaConexao)
 private
     FConexao : TFDConnection;
     FDLocalSQL : TFDLocalSQL;
@@ -32,24 +33,27 @@ implementation
 
 { TConexaoSqlite }
 
-procedure TConexaoSqlite.CommitaTransacao;
+procedure TConexaoSqliteMemory.CommitaTransacao;
 begin
   FConexao.Commit;
 end;
 
-function TConexaoSqlite.Connection: TFDCustomConnection;
+function TConexaoSqliteMemory.Connection: TFDCustomConnection;
 begin
   Result := FConexao;
 end;
 
-constructor TConexaoSqlite.Create(pTableName : string; pFields : TList<TCampo>);
+constructor TConexaoSqliteMemory.Create(pTableName : string; pFields : TList<TCampo>);
 var
  lCampo : TCampo;
+ lLeitorParametroSQLite : TLeitorParametrosSQLite;
 begin
   if not Assigned(FConexao) then begin
+    lLeitorParametroSQLite := TLeitorParametrosSQLite.Create;
     FConexao := TFDConnection.Create(nil);
     FConexao.DriverName:= 'SQLite';
     FConexao.Connected := True;
+    FConexao.Params.Database := lLeitorParametroSQLite.LerParametros.DATA_BASE;
 
     FDLocalSQL := TFDLocalSQL.Create(nil);
     FDLocalSQL.Connection := FConexao;
@@ -65,12 +69,12 @@ begin
   end;
 end;
 
-procedure TConexaoSqlite.IniciaTransacao;
+procedure TConexaoSqliteMemory.IniciaTransacao;
 begin
  FConexao.StartTransaction;
 end;
 
-procedure TConexaoSqlite.RollBackTransacao;
+procedure TConexaoSqliteMemory.RollBackTransacao;
 begin
   FConexao.Rollback;
 end;
