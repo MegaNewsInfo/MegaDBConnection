@@ -2,7 +2,7 @@ unit MegaConexao.Utils.CriadorDeCaminho;
 
 interface
 
-uses System.SysUtils, System.StrUtils, System.DateUtils;
+uses System.SysUtils, System.StrUtils, System.DateUtils, IWSystem;
 
 type
   TCriadorDeCaminho = class
@@ -19,9 +19,6 @@ type
  end;
 
 implementation
-
-uses
-   Vcl.Forms;
 
 { TCriadorDePasta }
 
@@ -72,7 +69,7 @@ end;
 
 function TCriadorDeCaminho.GeraNomePastaRaiz: string;
 begin
-  Result := ExtractFilePath(Application.ExeName) +
+  Result := ExtractFilePath(gsAppPath) +
             PastaDeLogs;
 end;
 

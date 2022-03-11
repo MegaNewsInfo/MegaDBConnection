@@ -21,7 +21,7 @@ implementation
 
 
 uses
-  System.SysUtils, System.Classes, Vcl.Forms;
+  System.SysUtils, System.Classes;
 
 { Tlogger }
 
