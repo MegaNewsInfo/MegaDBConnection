@@ -13,7 +13,7 @@ type
     private
 
     public
-      function Criar(pTipoComando: TTipoComando) : ISqlBuilder;
+      class function Criar(pTipoComando: TTipoComando) : ISqlBuilder;
    end;
 
 
@@ -27,14 +27,14 @@ uses
 
 { TFactorySqlBuilder }
 
-function TFactorySqlBuilder.Criar(pTipoComando: TTipoComando): ISqlBuilder;
+class function TFactorySqlBuilder.Criar(pTipoComando: TTipoComando): ISqlBuilder;
 begin
-    case pTipoComando of
-        tComInsert : Result := TSqlBuilderInsert.Create;
-        tComDelete : Result := TSqlBuilderDelete.Create;
-        tComUpdate : Result := TSqlBuilderUpdate.Create;
-        tComUpdateOrInsert : Result := TSqlBuilderUpdateOrInsert.Create;
-    end;
+  case pTipoComando of
+    tComInsert : Result := TSqlBuilderInsert.Create;
+    tComDelete : Result := TSqlBuilderDelete.Create;
+    tComUpdate : Result := TSqlBuilderUpdate.Create;
+    tComUpdateOrInsert : Result := TSqlBuilderUpdateOrInsert.Create;
+  end;
 end;
 
 end.
