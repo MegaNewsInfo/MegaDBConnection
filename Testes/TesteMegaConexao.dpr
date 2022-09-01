@@ -23,7 +23,6 @@ uses
   MegaConexao.Conexao.ConexaoFireBird in '..\MegaConexao\Conexao\MegaConexao.Conexao.ConexaoFireBird.pas',
   MegaConexao.Query.iQuery in '..\MegaConexao\Query\MegaConexao.Query.iQuery.pas',
   MegaConexao.Query.MegaQuery in '..\MegaConexao\Query\MegaConexao.Query.MegaQuery.pas',
-  MegaConexao.Conexao.ParametroConexao.LeitorParametrosFireBird in '..\MegaConexao\Conexao\ParametroConexao\MegaConexao.Conexao.ParametroConexao.LeitorParametrosFireBird.pas',
   MegaConexao.Utils.CriadorDeCaminho in '..\MegaConexao\Utils\MegaConexao.Utils.CriadorDeCaminho.pas',
   MegaConexao.Utils.CriadorDePasta in '..\MegaConexao\Utils\MegaConexao.Utils.CriadorDePasta.pas',
   MegaConexao.Utils.CriadorNomeArquivo in '..\MegaConexao\Utils\MegaConexao.Utils.CriadorNomeArquivo.pas',
@@ -37,8 +36,7 @@ uses
   TesteSQLBuiderUpdate in 'SQLBuilder\TesteSQLBuiderUpdate.pas',
   TesteSQLBuiderDelete in 'SQLBuilder\TesteSQLBuiderDelete.pas',
   MegaConexao.SqlBuilder.SqlBuilderUpdateOrInsert in '..\MegaConexao\SqlBuilder\MegaConexao.SqlBuilder.SqlBuilderUpdateOrInsert.pas',
-  TesteSQLBuiderUpdateOrInsert in 'SQLBuilder\TesteSQLBuiderUpdateOrInsert.pas',
-  MegaConexao.Conexao.ParametroConexao.IParametroConexaoSQLite in '..\MegaConexao\Conexao\ParametroConexao\MegaConexao.Conexao.ParametroConexao.IParametroConexaoSQLite.pas';
+  TesteSQLBuiderUpdateOrInsert in 'SQLBuilder\TesteSQLBuiderUpdateOrInsert.pas';
 
 var
   runner : ITestRunner;

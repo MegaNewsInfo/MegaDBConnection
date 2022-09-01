@@ -254,7 +254,6 @@ end;
 procedure TTesteQuery.TestSQLFailed;
 var
   lQuery : IQuery;
-  comando : string;
 begin
   lQuery := TMegaQuery.create(FMegaConexao,FLogger);
   Assert.IsFalse(lQuery.SQL('select * from tabela').DataSet.RecordCount > 0);

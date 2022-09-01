@@ -24,7 +24,7 @@ uses
     procedure RollbackTransaction;
 
     constructor Create(pMegaConexao : iMegaConexao; pLogger : Ilogger);
-
+    destructor Destroy; override;
  end;
 
 
@@ -52,6 +52,27 @@ end;
 function TMegaQuery.DataSet: TDataSet;
 begin
   Result := FQuery;
+end;
+
+destructor TMegaQuery.Destroy;
+var
+  P : pointer;
+begin
+  if FMegaConexao <> nil then
+  begin
+    P := Pointer(FMegaConexao);
+    Pointer(FMegaConexao) := nil;
+    iMegaConexao(P)._Release;
+  end;
+
+  if FLogger <> nil then
+  begin
+    P := Pointer(FLogger);
+    Pointer(FLogger) := nil;
+    iLogger(P)._Release;
+  end;
+
+  inherited;
 end;
 
 procedure TMegaQuery.ExecuteSql(value: string);

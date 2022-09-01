@@ -24,6 +24,7 @@ type
       procedure CommitaTransacao();
       procedure RollBackTransacao();
       constructor Create(pLeitorParametros : ILeitorParametroConexaoFireBird = nil);
+      destructor Destroy; override;
 
 
   end;
@@ -67,6 +68,17 @@ begin
 
   end;
 
+end;
+
+destructor TConexaoFireBird.Destroy;
+begin
+  if Assigned(FConexao) then
+  begin
+    FConexao.Connected := False;
+    FreeAndNil(FConexao);
+  end;
+
+  inherited;
 end;
 
 class function TConexaoFireBird.GetInstance(pLeitorParametros : ILeitorParametroConexaoFireBird = nil): TConexaoFireBird;
