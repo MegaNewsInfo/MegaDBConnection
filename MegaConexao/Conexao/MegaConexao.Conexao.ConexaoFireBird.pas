@@ -15,7 +15,7 @@ type
       class var FConexaoFirebird : TConexaoFireBird;
     public
       class function GetInstance(pLeitorParametros : ILeitorParametroConexaoFireBird = nil): TConexaoFireBird; static;
-      class function NewInstance() : TObject; override;
+      class function NewInstance : TObject; override;
       function Connection :TFDCustomConnection;
       procedure IniciaTransacao();
       procedure CommitaTransacao();
@@ -92,6 +92,8 @@ begin
   begin
     FConexaoFirebird := TConexaoFireBird(inherited NewInstance);
   end;
+
+  result := FConexaoFirebird;
 end;
 
 procedure TConexaoFireBird.RollBackTransacao;
