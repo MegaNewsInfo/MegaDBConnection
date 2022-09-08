@@ -10,7 +10,6 @@ uses
 
  type TMegaQuery = class(TInterfacedObject, IQuery)
    private
-     FMegaConexao : iMegaConexao;
      FLogger : Ilogger;
      FQuery : TFDQuery;
 
@@ -42,11 +41,16 @@ end;
 
 constructor TMegaQuery.Create(pMegaConexao: iMegaConexao; pLogger: Ilogger);
 begin
-  FMegaConexao := pMegaConexao;
-  FLogger := pLogger;
+  try
+    FLogger := pLogger;
 
-  FQuery := TFDQuery.Create(nil);
-  FQuery.Connection := FmegaCOnexao.Connection;
+    FQuery := TFDQuery.Create(nil);
+    FQuery.Connection := pMegaConexao.Connection;
+  except on E : Exception do
+    begin
+      raise Exception.Create(e.Message);
+    end;
+  end;
 end;
 
 function TMegaQuery.DataSet: TDataSet;
@@ -58,13 +62,6 @@ destructor TMegaQuery.Destroy;
 var
   P : pointer;
 begin
-  if FMegaConexao <> nil then
-  begin
-    P := Pointer(FMegaConexao);
-    Pointer(FMegaConexao) := nil;
-    iMegaConexao(P)._Release;
-  end;
-
   if FLogger <> nil then
   begin
     P := Pointer(FLogger);
