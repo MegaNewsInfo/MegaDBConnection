@@ -11,14 +11,11 @@ uses
 type
   TConexaoFireBird = class(TInterfacedObject,iMegaConexao)
     private
-       FConexao : TFDConnection;
+      FConexao : TFDConnection;
       class var FConexaoFirebird : TConexaoFireBird;
-
-
-
     public
       class function GetInstance(pLeitorParametros : ILeitorParametroConexaoFireBird = nil): TConexaoFireBird; static;
-
+      class function NewInstance() : TObject; override;
       function Connection :TFDCustomConnection;
       procedure IniciaTransacao();
       procedure CommitaTransacao();
@@ -52,7 +49,7 @@ constructor TConexaoFireBird.Create(pLeitorParametros : ILeitorParametroConexaoF
 var
   lParametros : TParametrosConexaoFireBird;
 begin
-
+  inherited Create();
   if not Assigned(FConexao) then begin
     FConexao := TFDConnection.Create(nil);
 
@@ -65,9 +62,7 @@ begin
     FConexao.DriverName:= 'FB';
 
     FConexao.Connected := True;
-
   end;
-
 end;
 
 destructor TConexaoFireBird.Destroy;
@@ -83,14 +78,20 @@ end;
 
 class function TConexaoFireBird.GetInstance(pLeitorParametros : ILeitorParametroConexaoFireBird = nil): TConexaoFireBird;
 begin
- If FConexaoFirebird = nil Then
-      FConexaoFirebird := TConexaoFireBird.Create(pLeitorParametros);//objeto instanciado através do Finstance
-    Result := FConexaoFirebird;//retorna o objeto
+  Result := TConexaoFireBird.Create(pLeitorParametros);
 end;
 
 procedure TConexaoFireBird.IniciaTransacao;
 begin
    FConexao.StartTransaction;
+end;
+
+class function TConexaoFireBird.NewInstance: TObject;
+begin
+  if not Assigned(FConexaoFirebird) then
+  begin
+    FConexaoFirebird := TConexaoFireBird(inherited NewInstance);
+  end;
 end;
 
 procedure TConexaoFireBird.RollBackTransacao;
