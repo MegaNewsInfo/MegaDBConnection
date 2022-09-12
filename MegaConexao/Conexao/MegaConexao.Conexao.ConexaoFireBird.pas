@@ -49,37 +49,37 @@ constructor TConexaoFireBird.Create(pLeitorParametros : ILeitorParametroConexaoF
 var
   lParametros : TParametrosConexaoFireBird;
 begin
-  inherited Create();
-  if not Assigned(FConexao) then begin
-    FConexao := TFDConnection.Create(nil);
+  try
+    inherited Create();
+    if not Assigned(FConexao) then begin
+      FConexao := TFDConnection.Create(nil);
 
-    lParametros := pLeitorParametros.LerParametros();
+      lParametros := pLeitorParametros.LerParametros();
 
-    FConexao.Params.Database:= lParametros.DATA_BASE;
-    FConexao.Params.UserName:= lParametros.USER_NAME;
-    FConexao.Params.Password:= lParametros.PASSWORD;
-    FConexao.Params.Values['Port'] := inttostr(lParametros.PORT);
-    FConexao.DriverName:= 'FB';
+      FConexao.Params.Database:= lParametros.DATA_BASE;
+      FConexao.Params.UserName:= lParametros.USER_NAME;
+      FConexao.Params.Password:= lParametros.PASSWORD;
+      FConexao.Params.Values['Port'] := inttostr(lParametros.PORT);
+      FConexao.DriverName:= 'FB';
 
-    FConexao.Connected := True;
+      FConexao.Connected := True;
+    end;
+  except on E : Exception do
+    begin
+      raise Exception.Create(E.Message);
+    end;
   end;
 end;
 
 destructor TConexaoFireBird.Destroy;
 begin
-//  if Assigned(FConexao) then
-//  begin
-//    FConexao.Connected := False;
-//    FreeAndNil(FConexao);
-//  end;
-
-//  inherited;
+  inherited;
 end;
 
 class function TConexaoFireBird.GetInstance(pLeitorParametros : ILeitorParametroConexaoFireBird = nil): TConexaoFireBird;
 begin
   try
-    Result := TConexaoFireBird.Create(pLeitorParametros);
+    Result :=   TConexaoFireBird.Create(pLeitorParametros);
   except on E : Exception do
     begin
       raise Exception.Create(E.Message);
