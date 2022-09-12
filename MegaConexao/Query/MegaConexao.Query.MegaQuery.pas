@@ -39,7 +39,7 @@ begin
  FQuery.Connection.Commit;
 end;
 
-constructor TMegaQuery.Create(pMegaConexao: iMegaConexao; pLogger: Ilogger);
+constructor TMegaQuery.Create(pMegaConexao : iMegaConexao; pLogger : Ilogger);
 begin
   try
     FLogger := pLogger;

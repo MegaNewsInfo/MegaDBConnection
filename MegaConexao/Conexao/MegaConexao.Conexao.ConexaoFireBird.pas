@@ -41,7 +41,7 @@ end;
 
 function TConexaoFireBird.Connection: TFDCustomConnection;
 begin
- Result := FConexao;
+  Result := FConexao;
 end;
 
 
@@ -67,18 +67,24 @@ end;
 
 destructor TConexaoFireBird.Destroy;
 begin
-  if Assigned(FConexao) then
-  begin
-    FConexao.Connected := False;
-    FreeAndNil(FConexao);
-  end;
+//  if Assigned(FConexao) then
+//  begin
+//    FConexao.Connected := False;
+//    FreeAndNil(FConexao);
+//  end;
 
-  inherited;
+//  inherited;
 end;
 
 class function TConexaoFireBird.GetInstance(pLeitorParametros : ILeitorParametroConexaoFireBird = nil): TConexaoFireBird;
 begin
-  Result := TConexaoFireBird.Create(pLeitorParametros);
+  try
+    Result := TConexaoFireBird.Create(pLeitorParametros);
+  except on E : Exception do
+    begin
+      raise Exception.Create(E.Message);
+    end;
+  end;
 end;
 
 procedure TConexaoFireBird.IniciaTransacao;
