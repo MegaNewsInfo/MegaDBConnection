@@ -23,7 +23,7 @@ implementation
 class function TFactoryQuery.Criar(pTipoConexao: TTipoConexao): IQuery;
 begin
   case pTipoConexao of
-    tcFirebird: Result := TMegaQuery.Create(TConexaoFireBird.GetInstance, TLogger.Create);
+    tcFirebird: Result := TMegaQuery.Create(TConexaoFireBird.GetInstance(), TLogger.Create);
     tcSqlite: Result := TMegaQuery.Create(TConexaoSqliteMemory.GetInstance, TLogger.Create);
   end;
 end;

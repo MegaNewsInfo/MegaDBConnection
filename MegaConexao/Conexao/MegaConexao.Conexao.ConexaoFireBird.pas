@@ -22,8 +22,6 @@ type
       procedure RollBackTransacao();
       constructor Create(pLeitorParametros : ILeitorParametroConexaoFireBird = nil);
       destructor Destroy; override;
-
-
   end;
 
 
@@ -36,7 +34,7 @@ uses
 
 procedure TConexaoFireBird.CommitaTransacao;
 begin
-   FConexao.Commit;
+  FConexao.Commit;
 end;
 
 function TConexaoFireBird.Connection: TFDCustomConnection;
@@ -89,7 +87,7 @@ end;
 
 procedure TConexaoFireBird.IniciaTransacao;
 begin
-   FConexao.StartTransaction;
+  FConexao.StartTransaction;
 end;
 
 class function TConexaoFireBird.NewInstance: TObject;
@@ -104,7 +102,7 @@ end;
 
 procedure TConexaoFireBird.RollBackTransacao;
 begin
-    FConexao.Rollback;
+  FConexao.Rollback;
 end;
 
 end.
